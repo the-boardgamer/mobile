@@ -5,10 +5,10 @@ import { StatusBar } from 'expo-status-bar'
 import Demo from '@components/demo'
 
 export default function App(): JSX.Element {
-  const getData = (name: string): string | number => {
-    if (name === 'James') return 'Hello ' + name
-    return 90
-  }
+  // const getData = (name: string): string | number => {
+  //   if (name === 'James') return 'Hello ' + name
+  //   return 90
+  // }
   return (
     <Contexts>
       <View style={styles.container}>

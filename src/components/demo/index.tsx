@@ -2,9 +2,11 @@ import { View } from 'react-native'
 import { ThemeType } from 'contexts/theme/types'
 import { styled } from 'styled-components/native'
 
-// FIX
+type TitleProps = {
+  theme: ThemeType
+}
 
-const Title = styled.Text((props: { theme: ThemeType }) => ({
+const Title = styled.Text<TitleProps>((props) => ({
   fontSize: '24px',
   textAlign: 'center',
   background: props.theme.palette.background.default,
