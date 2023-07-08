@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { styled } from 'styled-components/native';
+import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import { styled } from 'styled-components/native'
 
-const Title = styled.Text`
-  font-size: 24px;
-  text-align: center;
-  color: #BF4F74;
-`;
+import Demo from '@components/demo'
 
-export default function App() {
+const Title = styled.Text({
+  fontSize: '24px',
+  textAlign: 'center',
+  color: '#bf4f74',
+})
+
+export default function App(): JSX.Element {
+  const getData = (name: string): string | number => {
+    if (name === 'James') return 'Hello ' + name
+    return 90
+  }
   return (
     <View style={styles.container}>
       <Title>Open up App.tsx to start working on your app!</Title>
       <StatusBar style="auto" />
-      <Text>KLAKAKAKALALAL</Text>
+      <Demo />
+      <Text>{getData('James')}</Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -25,4 +32,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
