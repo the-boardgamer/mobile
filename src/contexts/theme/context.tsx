@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { ModeType } from 'theme/palettes/types'
+import { ModeType } from 'tokens/palettes/types'
 
 import { ThemeType } from './types'
 

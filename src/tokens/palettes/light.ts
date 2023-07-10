@@ -1,4 +1,4 @@
-import { BackgroundType, BaseType, ForegroundType, PaletteType } from '../types'
+import { BackgroundType, BaseType, ForegroundType, PaletteType } from './types'
 
 const primary: BaseType = {
   default: '#FDF7E5',

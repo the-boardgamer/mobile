@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native'
-import Contexts from 'contexts'
+import Providers from 'contexts'
 import { StatusBar } from 'expo-status-bar'
 
 import Demo from '@components/demo'
@@ -10,12 +10,12 @@ export default function App(): JSX.Element {
   //   return 90
   // }
   return (
-    <Contexts>
+    <Providers>
       <View style={styles.container}>
         <StatusBar style="auto" />
         <Demo />
       </View>
-    </Contexts>
+    </Providers>
   )
 }
 
