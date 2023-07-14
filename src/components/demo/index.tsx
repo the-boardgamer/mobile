@@ -1,5 +1,5 @@
 import { View } from 'react-native'
-import { ThemeType } from 'contexts/theme/types'
+import { ThemeType } from 'utils/theme/types'
 import { styled } from 'styled-components/native'
 
 type TitleProps = {

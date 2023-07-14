@@ -1,9 +1,9 @@
 import { FamilyType, FontSizeType, TypographyType } from './types'
 
 const family: FamilyType = {
-  regular: 'Quicksand',
-  text: 'Manrope',
-  title: 'ASA',
+  primary: 'Quicksand',
+  secondary: 'Manrope',
+  tertiary: 'Arial',
 }
 
 const fontSize: FontSizeType = {

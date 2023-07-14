@@ -1,7 +1,7 @@
 export interface FamilyType {
-  regular: string
-  text: string
-  title: string
+  primary: string
+  secondary: string
+  tertiary: string
 }
 
 export interface FontSizeType {

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
-import Providers from 'contexts'
 import { StatusBar } from 'expo-status-bar'
+import Providers from 'utils'
 
 import Demo from '@components/demo'
 
