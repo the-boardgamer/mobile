@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/native'
-import { dark, radius, size, space, typography } from 'tokens'
+import { dark, radius, size, typography } from 'tokens'
 import { ModeType } from 'tokens/palettes/types'
 
 import ThemeContext, { ThemeContextType } from './context'
@@ -15,7 +15,6 @@ const ThemeProvider = ({ children }: { children?: React.ReactNode }): JSX.Elemen
 
     radius,
     size,
-    space,
     typography,
   }
 

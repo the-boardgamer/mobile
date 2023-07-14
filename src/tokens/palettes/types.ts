@@ -2,27 +2,35 @@ export type ModeType = 'dark' | 'light'
 
 export interface BaseType {
   default: string
-  pressed: string
-  // rest
+  variant: string
+  inverse: string
+  shade5: string
+  shade10: string
+  shade15: string
+  shade30: string
+  shade60: string
+  shade90: string
 }
 
 export interface BackgroundType {
   default: string
-  container: string
-  foreground: string
-  disabled: string
+  variant: string
+  shade5: string
+  shade10: string
+  shade15: string
+  shade30: string
+  shade60: string
+  shade90: string
 }
 
 export interface ForegroundType {
   default: string
-  light: string
-  medium: string
-  inverse: string
-  disabled: string
+  variant: string
 }
 
 export interface PaletteType {
   primary: BaseType
+  secondary: BaseType
   background: BackgroundType
   foreground: ForegroundType
 }
