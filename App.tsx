@@ -2,38 +2,35 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import changeLanguage from 'locales/changeLanguage'
 import { useTranslation } from 'react-i18next'
-import { styled } from 'styled-components/native'
+// import { styled } from 'styled-components/native'
+import Providers from 'utils'
 
 import Demo from '@components/demo'
-
-const Title = styled.Text({
-  fontSize: '24px',
-  textAlign: 'center',
-  color: '#bf4f74',
-})
 
 export default function App(): JSX.Element {
   const { t } = useTranslation()
 
   return (
-    <View style={styles.container}>
-      <Title>{t('welcome')}</Title>
-      <StatusBar style="auto" />
-      <Demo />
-      <Text>{t('description')}</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={(): void => changeLanguage('en')}
-      >
-        <Text>EN</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={(): void => changeLanguage('pt')}
-      >
-        <Text>PT</Text>
-      </TouchableOpacity>
-    </View>
+    <Providers>
+      <View style={styles.container}>
+        <Text>{t('welcome')}</Text>
+        <StatusBar style="auto" />
+        <Demo />
+        <Text>{t('description')}</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={(): void => changeLanguage('en')}
+        >
+          <Text>EN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={(): void => changeLanguage('pt')}
+        >
+          <Text>PT</Text>
+        </TouchableOpacity>
+      </View>
+    </Providers>
   )
 }
 
