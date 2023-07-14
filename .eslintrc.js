@@ -16,6 +16,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     'arrow-body-style': 'error',
+    'javascript.validate.enable': 'off',
   },
 
   overrides: [
