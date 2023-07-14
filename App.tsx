@@ -1,6 +1,6 @@
 import * as React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Button, StyleSheet, View } from 'react-native'
 import SignUp from 'components/sign_up'
 import TestAuth from 'components/test_auth'
 import * as Google from 'expo-auth-session/providers/google'
@@ -11,6 +11,7 @@ import {
   onAuthStateChanged,
   signInWithCredential,
   signOut,
+  User,
 } from 'firebase/auth'
 import { styled } from 'styled-components/native'
 
@@ -27,15 +28,15 @@ const Title = styled.Text({
 })
 
 export default function App(): JSX.Element {
-  const [userInfo, setUserInfo] = React.useState()
+  const [userInfo, setUserInfo] = React.useState<User>()
   const [loading, setLoading] = React.useState(false)
-  const [request, response, promptAsync] = Google.useAuthRequest({
+  const [_, response, promptAsync] = Google.useAuthRequest({
     iosClientId: IOS_CLIENT_ID,
     androidClientId: ANDROID_CLIENT_ID,
     expoClientId: EXPO_CLIENT_ID,
   })
 
-  async function checkLocalUser(): void {
+  async function checkLocalUser(): Promise<void> {
     try {
       setLoading(true)
 
@@ -44,7 +45,9 @@ export default function App(): JSX.Element {
       console.log('local storage: ', userData)
       setUserInfo(userData)
     } catch (e) {
-      console.log(e.message)
+      if (e instanceof Error) {
+        console.log(e.message)
+      }
     } finally {
       setLoading(false)
     }
@@ -91,12 +94,12 @@ export default function App(): JSX.Element {
 
       <Button
         title="Sign Out"
-        onPress={async () => await signOut(auth)}
+        onPress={async (): Promise<void> => await signOut(auth)}
       />
 
       <Button
         title="Clear LOCAL STORAGE"
-        onPress={() => {
+        onPress={(): void => {
           AsyncStorage.clear()
         }}
       />
