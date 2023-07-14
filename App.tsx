@@ -16,6 +16,7 @@ import { styled } from 'styled-components/native'
 
 import { auth } from './firebaseConfig'
 import Demo from '@components/demo'
+import { ANDROID_CLIENT_ID, EXPO_CLIENT_ID, IOS_CLIENT_ID } from '@env'
 
 WebBrowser.maybeCompleteAuthSession()
 
@@ -29,9 +30,9 @@ export default function App(): JSX.Element {
   const [userInfo, setUserInfo] = React.useState()
   const [loading, setLoading] = React.useState(false)
   const [request, response, promptAsync] = Google.useAuthRequest({
-    iosClientId: process.env.IOS_CLIENT_ID,
-    androidClientId: process.env.ANDROID_CLIENT_ID,
-    expoClientId: process.env.EXPO_CLIENT_ID,
+    iosClientId: IOS_CLIENT_ID,
+    androidClientId: ANDROID_CLIENT_ID,
+    expoClientId: EXPO_CLIENT_ID,
   })
 
   async function checkLocalUser(): void {
