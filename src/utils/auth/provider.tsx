@@ -13,7 +13,7 @@ function useProtectedRoute(user: UserInterface | null): void {
     if (!user && !inAuthGroup) {
       router.replace('/sign-in')
     } else if (user && inAuthGroup) {
-      router.replace('/')
+      router.replace('/home')
     }
   }, [user, segments, router])
 }

@@ -1,11 +1,16 @@
-import { Slot } from 'expo-router'
+import { Stack } from 'expo-router'
 
 import { AuthProvider } from '../src/utils'
 
-export default function Root(): JSX.Element {
-  return (
-    <AuthProvider>
-      <Slot />
-    </AuthProvider>
-  )
-}
+const Root = (): JSX.Element => (
+  <AuthProvider>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="(tabs)"
+        options={{}}
+      />
+    </Stack>
+  </AuthProvider>
+)
+
+export default Root
