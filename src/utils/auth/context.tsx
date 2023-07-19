@@ -4,10 +4,11 @@ export interface UserInterface {
   id: number
 }
 
-export interface AuthContextInterface {
+export interface AuthContextType {
   signIn: () => void
   signOut: () => void
   user: UserInterface | null
 }
 
-export const AuthContext = React.createContext<AuthContextInterface | null>(null)
+export const AuthContext = React.createContext<AuthContextType | null>(null)
+AuthContext.displayName = 'AuthContext'

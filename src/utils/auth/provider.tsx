@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter, useSegments } from 'expo-router'
 
-import { AuthContext, type UserInterface } from './context'
+import { AuthContext, AuthContextType, type UserInterface } from './context'
 
 function useProtectedRoute(user: UserInterface | null): void {
   const segments = useSegments()
@@ -18,20 +18,16 @@ function useProtectedRoute(user: UserInterface | null): void {
   }, [user, segments, router])
 }
 
-export function AuthProvider(props: { children: React.ReactNode }): JSX.Element {
+export const AuthProvider = (props: { children: React.ReactNode }): JSX.Element => {
   const [user, setAuth] = React.useState<UserInterface | null>(null)
 
   useProtectedRoute(user)
 
-  return (
-    <AuthContext.Provider
-      value={{
-        signIn: () => setAuth({ id: 20 }),
-        signOut: () => setAuth(null),
-        user,
-      }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  )
+  const value: AuthContextType = {
+    signIn: () => setAuth({ id: 20 }),
+    signOut: () => setAuth(null),
+    user,
+  }
+
+  return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
 }

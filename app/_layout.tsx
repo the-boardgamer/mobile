@@ -1,16 +1,15 @@
 import { Stack } from 'expo-router'
-
-import { AuthProvider } from '../src/utils'
+import Providers from 'utils'
 
 const Root = (): JSX.Element => (
-  <AuthProvider>
+  <Providers>
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="(tabs)"
         options={{}}
       />
     </Stack>
-  </AuthProvider>
+  </Providers>
 )
 
 export default Root

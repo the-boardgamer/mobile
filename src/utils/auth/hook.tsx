@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { AuthContext, type AuthContextInterface } from './context'
+import { AuthContext, type AuthContextType } from './context'
 
-export function useAuth(): AuthContextInterface {
+export function useAuth(): AuthContextType {
   const userAuthContext = React.useContext(AuthContext)
 
   if (userAuthContext === null)
