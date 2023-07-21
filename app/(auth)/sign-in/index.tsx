@@ -15,16 +15,15 @@ import {
 } from 'firebase/auth'
 import changeLanguage from 'locales/changeLanguage'
 import { useTranslation } from 'react-i18next'
-// import { styled } from 'styled-components/native'
-import Providers from 'utils'
 
-import { auth } from './firebaseConfig'
-import Demo from '@components/demo'
+import { auth } from '../../../firebaseConfig'
 import { ANDROID_CLIENT_ID, EXPO_CLIENT_ID, IOS_CLIENT_ID } from '@env'
 
 WebBrowser.maybeCompleteAuthSession()
+import { useAuth } from '../../../src/utils/auth'
 
-export default function App(): JSX.Element {
+export default function SignIn(): JSX.Element {
+  const { signIn } = useAuth()
   const { t } = useTranslation()
   const [userInfo, setUserInfo] = React.useState<User>()
   const [loading, setLoading] = React.useState(false)
@@ -84,11 +83,10 @@ export default function App(): JSX.Element {
     )
 
   return (
-    <Providers>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={styles.container}>
         <Text>{t('welcome')}</Text>
         <StatusBar style="auto" />
-        <Demo />
         {userInfo ? <TestAuth /> : <SignUp promptAsync={promptAsync} />}
 
         <Button
@@ -114,8 +112,10 @@ export default function App(): JSX.Element {
         >
           <Text>PT</Text>
         </TouchableOpacity>
+
+        <Text onPress={(): void => signIn()}>Sign In</Text>
       </View>
-    </Providers>
+    </View>
   )
 }
 
