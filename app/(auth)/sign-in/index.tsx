@@ -1,7 +1,7 @@
 import * as React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import SignUp from 'components/sign_up'
+import Sign from 'components/sign'
 import TestAuth from 'components/test_auth'
 import * as Google from 'expo-auth-session/providers/google'
 import { StatusBar } from 'expo-status-bar'
@@ -87,7 +87,7 @@ export default function SignIn(): JSX.Element {
       <View style={styles.container}>
         <Text>{t('welcome')}</Text>
         <StatusBar style="auto" />
-        {userInfo ? <TestAuth /> : <SignUp promptAsync={promptAsync} />}
+        {userInfo ? <TestAuth /> : <Sign promptAsync={promptAsync} />}
 
         <Button
           title="Sign Out"
