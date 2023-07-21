@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import React from 'react'
 import { ModeType } from 'tokens/palettes/types'
 
 import { ThemeType } from './types'
@@ -9,7 +9,5 @@ export interface ThemeContextType {
   setMode: (mode: ModeType) => void
 }
 
-const ThemeContext = createContext<ThemeContextType | null>(null)
+export const ThemeContext = React.createContext<ThemeContextType | null>(null)
 ThemeContext.displayName = 'ThemeContext'
-
-export default ThemeContext

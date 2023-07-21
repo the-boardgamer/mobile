@@ -2,20 +2,18 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import changeLanguage from 'locales/changeLanguage'
 import { useTranslation } from 'react-i18next'
-// import { styled } from 'styled-components/native'
-import Providers from 'utils'
 
-import Demo from '@components/demo'
+import { useAuth } from '../../../src/utils/auth'
 
-export default function App(): JSX.Element {
+export default function SignIn(): JSX.Element {
+  const { signIn } = useAuth()
   const { t } = useTranslation()
 
   return (
-    <Providers>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={styles.container}>
         <Text>{t('welcome')}</Text>
         <StatusBar style="auto" />
-        <Demo />
         <Text>{t('description')}</Text>
         <TouchableOpacity
           style={styles.button}
@@ -29,8 +27,10 @@ export default function App(): JSX.Element {
         >
           <Text>PT</Text>
         </TouchableOpacity>
+
+        <Text onPress={(): void => signIn()}>Sign In</Text>
       </View>
-    </Providers>
+    </View>
   )
 }
 

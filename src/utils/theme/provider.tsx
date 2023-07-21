@@ -3,10 +3,10 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components/native'
 import { dark, radius, size, typography } from 'tokens'
 import { ModeType } from 'tokens/palettes/types'
 
-import ThemeContext, { ThemeContextType } from './context'
+import { ThemeContext, type ThemeContextType } from './context'
 import { ThemeType } from './types'
 
-const ThemeProvider = ({ children }: { children?: React.ReactNode }): JSX.Element => {
+export const ThemeProvider = (props: { children: React.ReactNode }): JSX.Element => {
   const [mode, setMode] = useState<ModeType>('dark')
 
   const theme: ThemeType = {
@@ -26,9 +26,7 @@ const ThemeProvider = ({ children }: { children?: React.ReactNode }): JSX.Elemen
 
   return (
     <ThemeContext.Provider value={value}>
-      <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+      <StyledThemeProvider theme={theme}>{props.children}</StyledThemeProvider>
     </ThemeContext.Provider>
   )
 }
-
-export default ThemeProvider
