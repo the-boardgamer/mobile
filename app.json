@@ -33,6 +33,9 @@
         "projectId": "553ecf0a-e564-4a75-899e-2b4fd03fd7c7"
       }
     },
-    "scheme": "mobile"
+    "scheme": "mobile",
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }

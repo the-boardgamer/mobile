@@ -1,6 +1,6 @@
 import * as React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { ActivityIndicator, Button, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import SignUp from 'components/sign_up'
 import TestAuth from 'components/test_auth'
 import * as Google from 'expo-auth-session/providers/google'
@@ -13,7 +13,10 @@ import {
   signOut,
   User,
 } from 'firebase/auth'
-import { styled } from 'styled-components/native'
+import changeLanguage from 'locales/changeLanguage'
+import { useTranslation } from 'react-i18next'
+// import { styled } from 'styled-components/native'
+import Providers from 'utils'
 
 import { auth } from './firebaseConfig'
 import Demo from '@components/demo'
@@ -21,13 +24,8 @@ import { ANDROID_CLIENT_ID, EXPO_CLIENT_ID, IOS_CLIENT_ID } from '@env'
 
 WebBrowser.maybeCompleteAuthSession()
 
-const Title = styled.Text({
-  fontSize: '24px',
-  textAlign: 'center',
-  color: '#bf4f74',
-})
-
 export default function App(): JSX.Element {
+  const { t } = useTranslation()
   const [userInfo, setUserInfo] = React.useState<User>()
   const [loading, setLoading] = React.useState(false)
   const [_, response, promptAsync] = Google.useAuthRequest({
@@ -86,24 +84,38 @@ export default function App(): JSX.Element {
     )
 
   return (
-    <View style={styles.container}>
-      <Title>Open up App.tsx to start working on your app!</Title>
-      <StatusBar style="auto" />
-      <Demo />
-      {userInfo ? <TestAuth /> : <SignUp promptAsync={promptAsync} />}
+    <Providers>
+      <View style={styles.container}>
+        <Text>{t('welcome')}</Text>
+        <StatusBar style="auto" />
+        <Demo />
+        {userInfo ? <TestAuth /> : <SignUp promptAsync={promptAsync} />}
 
-      <Button
-        title="Sign Out"
-        onPress={async (): Promise<void> => await signOut(auth)}
-      />
+        <Button
+          title="Sign Out"
+          onPress={async (): Promise<void> => await signOut(auth)}
+        />
 
-      <Button
-        title="Clear LOCAL STORAGE"
-        onPress={(): void => {
-          AsyncStorage.clear()
-        }}
-      />
-    </View>
+        <Button
+          title="Clear LOCAL STORAGE"
+          onPress={(): void => {
+            AsyncStorage.clear()
+          }}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={(): void => changeLanguage('en')}
+        >
+          <Text>EN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={(): void => changeLanguage('pt')}
+        >
+          <Text>PT</Text>
+        </TouchableOpacity>
+      </View>
+    </Providers>
   )
 }
 
@@ -113,5 +125,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'red',
+    padding: 12,
+    margin: 16,
+    borderRadius: 12,
   },
 })

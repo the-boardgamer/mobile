@@ -23,10 +23,14 @@
     "expo-status-bar": "~1.4.4",
     "expo-web-browser": "~12.1.1",
     "firebase": "^10.0.0",
+    "i18next": "^23.2.8",
+    "i18next-browser-languagedetector": "^7.1.0",
     "react": "18.2.0",
+    "react-i18next": "^13.0.2",
     "react-native": "0.71.8",
     "styled-components": "^6.0.2",
-    "react-native-dotenv": "^3.4.9"
+    "react-native-dotenv": "^3.4.9",
+    "expo-localization": "~14.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
