@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native'
 
-import { useAuth } from '../../../src/utils'
+import { useAuth } from '../../../src/utils/auth'
 
 const Profile = (): JSX.Element => {
   const { signOut } = useAuth()
