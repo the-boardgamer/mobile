@@ -11,18 +11,16 @@ module.exports = {
   plugins: ['prettier', '@typescript-eslint', 'simple-import-sort'],
   parser: '@typescript-eslint/parser',
 
-  rules: {
-    '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/explicit-function-return-type': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
-    'arrow-body-style': 'error',
-    'javascript.validate.enable': 'off',
-  },
+  rules: {},
 
   overrides: [
     {
-      files: ['**/*.js', '**/*.ts', '**/*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       rules: {
+        'arrow-body-style': 'error',
+        '@typescript-eslint/explicit-function-return-type': 'error',
+        '@typescript-eslint/explicit-module-boundary-types': 'error',
+        '@typescript-eslint/no-unused-vars': 'error',
         'simple-import-sort/imports': [
           'error',
           { groups: [['^react$', 'react-native', '^[a-z]']] },
