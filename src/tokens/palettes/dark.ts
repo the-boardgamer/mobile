@@ -27,6 +27,7 @@ const secondary: BaseType = {
 const background: BackgroundType = {
   default: '#31213B',
   variant: '#271A2F',
+  inverse: '#FDF7E5',
   shade5: 'rgba(49, 33, 59, 0.05)',
   shade10: 'rgba(49, 33, 59, 0.1)',
   shade15: 'rgba(49, 33, 59, 0.15)',

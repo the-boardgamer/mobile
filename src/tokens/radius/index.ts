@@ -6,6 +6,8 @@ const radius: RadiusType = {
   radius3: '8px',
   radius4: '12px',
   radius5: '16px',
+  radius6: '20px',
+  radius7: '24px',
 }
 
 export default radius
