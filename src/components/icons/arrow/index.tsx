@@ -7,8 +7,7 @@ function IconArrow(props: Props): JSX.Element {
 
   const filledSvg = (
     <Svg
-      // {...rest}
-      style={{ backgroundColor: 'red' }}
+      {...rest}
       fill="none"
     >
       <Path
