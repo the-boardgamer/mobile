@@ -1,20 +1,105 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import * as React from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { ActivityIndicator, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Sign from 'components/sign'
+import TestAuth from 'components/test_auth'
+import * as Google from 'expo-auth-session/providers/google'
 import { StatusBar } from 'expo-status-bar'
+import * as WebBrowser from 'expo-web-browser'
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithCredential,
+  signOut,
+  User,
+} from 'firebase/auth'
 import changeLanguage from 'locales/changeLanguage'
 import { useTranslation } from 'react-i18next'
 
+import { auth } from '../../../firebaseConfig'
+import { ANDROID_CLIENT_ID, EXPO_CLIENT_ID, IOS_CLIENT_ID } from '@env'
+
+WebBrowser.maybeCompleteAuthSession()
 import { useAuth } from '../../../src/utils/auth'
 
 export default function SignIn(): JSX.Element {
   const { signIn } = useAuth()
   const { t } = useTranslation()
+  const [userInfo, setUserInfo] = React.useState<User>()
+  const [loading, setLoading] = React.useState(false)
+  const [_, response, promptAsync] = Google.useAuthRequest({
+    iosClientId: IOS_CLIENT_ID,
+    androidClientId: ANDROID_CLIENT_ID,
+    expoClientId: EXPO_CLIENT_ID,
+  })
+
+  async function checkLocalUser(): Promise<void> {
+    try {
+      setLoading(true)
+
+      const userJSON = await AsyncStorage.getItem('@user')
+      const userData = userJSON ? JSON.parse(userJSON) : null
+      console.log('local storage: ', userData)
+      setUserInfo(userData)
+    } catch (e) {
+      if (e instanceof Error) {
+        console.log(e.message)
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  React.useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params
+      const credential = GoogleAuthProvider.credential(id_token)
+      signInWithCredential(auth, credential)
+    }
+  }, [response])
+
+  React.useEffect(() => {
+    checkLocalUser()
+
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // check refresh token
+        setUserInfo(user)
+        // check token
+        await AsyncStorage.setItem('@user', JSON.stringify(user))
+      } else {
+        console.log('Not Authenticated')
+      }
+    })
+
+    return () => unsub()
+  }, [])
+
+  if (loading)
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={styles.container}>
         <Text>{t('welcome')}</Text>
         <StatusBar style="auto" />
-        <Text>{t('description')}</Text>
+        {userInfo ? <TestAuth /> : <Sign promptAsync={promptAsync} />}
+
+        <Button
+          title="Sign Out"
+          onPress={async (): Promise<void> => await signOut(auth)}
+        />
+
+        <Button
+          title="Clear LOCAL STORAGE"
+          onPress={(): void => {
+            AsyncStorage.clear()
+          }}
+        />
         <TouchableOpacity
           style={styles.button}
           onPress={(): void => changeLanguage('en')}
