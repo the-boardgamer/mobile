@@ -21,3 +21,5 @@ web-build/
 .env
 
 ./ios/Pods
+
+expo-env.d.ts

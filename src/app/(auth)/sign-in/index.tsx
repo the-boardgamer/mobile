@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import changeLanguage from 'locales/changeLanguage'
 import { useTranslation } from 'react-i18next'
 
-import { useAuth } from '../../../src/utils/auth'
+import { useAuth } from '@/contexts'
+import changeLanguage from '@/locales/changeLanguage'
 
 export default function SignIn(): JSX.Element {
   const { signIn } = useAuth()
