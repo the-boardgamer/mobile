@@ -15,6 +15,7 @@ export interface BaseType {
 export interface BackgroundType {
   default: string
   variant: string
+  inverse: string
   shade5: string
   shade10: string
   shade15: string

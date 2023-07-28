@@ -4,4 +4,6 @@ export interface RadiusType {
   radius3: string
   radius4: string
   radius5: string
+  radius6: string
+  radius7: string
 }
