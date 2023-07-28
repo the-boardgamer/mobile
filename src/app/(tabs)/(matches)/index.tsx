@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native'
-import Button from 'components/button'
-import { IconHome, IconStar } from 'components/icons'
+
+import Button from '@components/button'
+import { IconHome, IconStar } from '@components/icons'
 
 const Matches = (): JSX.Element => (
   <View>

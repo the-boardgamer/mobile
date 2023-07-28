@@ -10,13 +10,14 @@ export interface Props extends PressableProps {
   variant?: 'filled' | 'shade' | 'outlined' | 'ghost'
 }
 
-export default function Button({
-  color = 'primary',
-  label,
-  icon,
-  variant = 'filled',
-  ...rest
-}: Props): JSX.Element {
+const defaultValues: Props = {
+  color: 'primary',
+  variant: 'filled',
+}
+
+export default function Button(props: Props): JSX.Element {
+  const { color, label, icon, variant, ...rest } = { ...defaultValues, ...props }
+
   const theme = useTheme()
 
   const animated = new Animated.Value(1)

@@ -1,27 +1,12 @@
 import Svg, { Path } from 'react-native-svg'
 
-import { Props } from '../types'
+import { defaultValues, Props } from '../types'
 
-function IconHome({
-  filled = false,
-  color = '#31213B',
-  width = 24,
-  height = 24,
-  viewBox = '0 0 24 24',
-  ...rest
-}: Props): JSX.Element {
-  const props = {
-    width,
-    height,
-    viewBox,
-    fill: color,
-  }
+function IconHome(props: Props): JSX.Element {
+  const { filled, color, ...rest } = { ...defaultValues, ...props }
 
   const filledSvg = (
-    <Svg
-      {...props}
-      {...rest}
-    >
+    <Svg {...rest}>
       <Path
         d="M17.667 6.26c0 2.848-2.477 5.262-5.667 5.262S6.333 9.108 6.333 6.26 8.81 1 12 1s5.667 2.414 5.667 5.26zM12 15.61c2.648 0 4.997.506 6.646 1.28 1.728.812 2.354 1.735 2.354 2.415 0 .68-.007 1.154-.12 1.56-.096.347-.274.65-.692.934-.457.31-1.235.62-2.573.847-1.33.225-3.143.355-5.615.355-2.472 0-4.285-.13-5.615-.355-1.338-.226-2.116-.537-2.573-.847-.418-.285-.596-.587-.692-.934-.113-.406-.12-.88-.12-1.56s.626-1.603 2.354-2.415c1.65-.774 3.998-1.28 6.646-1.28z"
         stroke={color}
@@ -32,7 +17,6 @@ function IconHome({
 
   const linedSvg = (
     <Svg
-      {...props}
       {...rest}
       fill="none"
     >
