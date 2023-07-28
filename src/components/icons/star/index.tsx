@@ -1,25 +1,12 @@
 import Svg, { Path } from 'react-native-svg'
 
-import { Props } from '../types'
+import { defaultValues, Props } from '../types'
 
-function IconStar({
-  filled,
-  color = '#31213B',
-  width = 24,
-  height = 24,
-  viewBox = '0 0 24 24',
-  ...rest
-}: Props): JSX.Element {
-  const props = {
-    width,
-    height,
-    viewBox,
-    fill: color,
-  }
+function IconStar(props: Props): JSX.Element {
+  const { filled, color, ...rest } = { ...defaultValues, ...props }
 
   const filledSvg = (
     <Svg
-      {...props}
       {...rest}
       fill="none"
     >
@@ -36,7 +23,6 @@ function IconStar({
 
   const linedSvg = (
     <Svg
-      {...props}
       {...rest}
       fill="none"
     >
