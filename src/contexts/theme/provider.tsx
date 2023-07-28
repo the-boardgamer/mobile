@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components/native'
-import { dark, radius, size, typography } from 'tokens'
-import { ModeType } from 'tokens/palettes/types'
 
+import { dark, radius, size, typography } from '../../tokens'
+import { ModeType } from '../../tokens/palettes/types'
 import { ThemeContext, type ThemeContextType } from './context'
 import { ThemeType } from './types'
 

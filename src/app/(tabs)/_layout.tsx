@@ -1,20 +1,20 @@
 import { Tabs } from 'expo-router'
 
-const Layout = (): JSX.Element => (
-  <Tabs>
+const _layout = (): JSX.Element => (
+  <Tabs screenOptions={{ headerShown: true }}>
     <Tabs.Screen
-      name="home/index"
+      name="(home)/index"
       options={{ tabBarLabel: 'Home' }}
     />
     <Tabs.Screen
-      name="matches/index"
+      name="(matches)/index"
       options={{ tabBarLabel: 'Matches' }}
     />
     <Tabs.Screen
-      name="profile/index"
+      name="(profile)/index"
       options={{ tabBarLabel: 'Profile' }}
     />
   </Tabs>
 )
 
-export default Layout
+export default _layout

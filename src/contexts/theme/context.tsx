@@ -1,6 +1,6 @@
 import React from 'react'
-import { ModeType } from 'tokens/palettes/types'
 
+import { ModeType } from '../../tokens/palettes/types'
 import { ThemeType } from './types'
 
 export interface ThemeContextType {
