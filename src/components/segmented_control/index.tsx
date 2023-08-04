@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SegmentedControl from '@react-native-segmented-control/segmented-control'
+import * as SegmentedControl from '@react-native-segmented-control/segmented-control'
 import { useTheme } from 'styled-components'
 
 import { styledActiveFont, styledFont, styledSegmented } from './styles'
@@ -25,7 +25,7 @@ export default function SegmentedControlTest(props: Props): JSX.Element {
   const theme = useTheme()
 
   return (
-    <SegmentedControl
+    <SegmentedControl.default
       values={segments}
       selectedIndex={index}
       backgroundColor={theme.palette.background.variant}

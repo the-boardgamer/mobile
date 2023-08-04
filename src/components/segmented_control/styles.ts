@@ -18,4 +18,5 @@ export const styledSegmented = (theme: DefaultTheme): ViewStyle => ({
   height: 58,
   borderRadius: theme.radius.radius3,
   backgroundColor: theme.palette.background.variant,
+  margin: 20,
 })
