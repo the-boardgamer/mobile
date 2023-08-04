@@ -1,9 +1,9 @@
 import React from 'react'
 import { DefaultTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
-import { ThemeType } from 'utils/theme/types'
 
 import { Props } from '.'
+import { ThemeType } from '@contexts/theme/types'
 
 interface StylesProps {
   color: Exclude<Props['color'], undefined>
