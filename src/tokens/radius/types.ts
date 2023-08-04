@@ -1,9 +1,9 @@
 export interface RadiusType {
-  radius1: string
-  radius2: string
-  radius3: string
-  radius4: string
-  radius5: string
-  radius6: string
-  radius7: string
+  /** 0px */ radius1: string
+  /** 4px */ radius2: string
+  /** 8px */ radius3: string
+  /** 12px */ radius4: string
+  /** 16px */ radius5: string
+  /** 20px */ radius6: string
+  /** 24px */ radius7: string
 }
