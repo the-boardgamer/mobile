@@ -1,20 +1,30 @@
-import { Tabs } from 'expo-router'
+import BottomTabs from '@components/bottom_tabs'
+import Calendar from '@components/icons/calendar'
+import Home from '@components/icons/home'
+import Person from '@components/icons/person'
 
-const _layout = (): JSX.Element => (
-  <Tabs screenOptions={{ headerShown: true }}>
-    <Tabs.Screen
-      name="(home)/index"
-      options={{ tabBarLabel: 'Home' }}
+const _layout = (): JSX.Element => {
+  const tabs = [
+    {
+      label: 'home',
+      icon: <Home />,
+    },
+    {
+      label: 'matches',
+      icon: <Calendar />,
+    },
+    {
+      label: 'profile',
+      icon: <Person />,
+    },
+  ]
+
+  return (
+    <BottomTabs
+      padding={28}
+      tabs={tabs}
     />
-    <Tabs.Screen
-      name="(matches)/index"
-      options={{ tabBarLabel: 'Matches' }}
-    />
-    <Tabs.Screen
-      name="(profile)/index"
-      options={{ tabBarLabel: 'Profile' }}
-    />
-  </Tabs>
-)
+  )
+}
 
 export default _layout
