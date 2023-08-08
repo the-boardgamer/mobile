@@ -19,12 +19,7 @@ const _layout = (): JSX.Element => {
     },
   ]
 
-  return (
-    <BottomTabs
-      padding={28}
-      tabs={tabs}
-    />
-  )
+  return <BottomTabs tabs={tabs} />
 }
 
 export default _layout

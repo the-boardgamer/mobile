@@ -14,7 +14,7 @@ const Tab = (props: Props): JSX.Element => {
   const { label, icon, accessibilityState, onPress } = props
   const { theme } = useTheme()
 
-  const offsetValue = React.useRef(new Animated.Value(-100)).current
+  const offsetValue = React.useRef(new Animated.Value(100)).current
   const selected: boolean = accessibilityState.selected
 
   React.useEffect(() => {
@@ -25,7 +25,7 @@ const Tab = (props: Props): JSX.Element => {
       }).start()
     else
       Animated.spring(offsetValue, {
-        toValue: -100,
+        toValue: 100,
         useNativeDriver: true,
       }).start()
   }, [selected, offsetValue])

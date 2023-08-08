@@ -38,6 +38,7 @@ const BottomTabs = (props: Props): JSX.Element => {
     tabBarHideOnKeyboard: true,
     headerShown: true,
     headerTransparent: true,
+
     tabBarStyle: {
       paddingHorizontal: parseInt(theme.size.size7.split('px')[0], 10),
       paddingVertical: parseInt(theme.size.size7.split('px')[0], 10),
