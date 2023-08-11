@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 
 import Button from '@components/button'
-import { IconHome, IconSearch, IconStar } from '@components/icons'
+import { IconHome, IconStar } from '@components/icons'
 import Input from '@components/input'
 
 const Matches = (): JSX.Element => (
@@ -25,9 +25,7 @@ const Matches = (): JSX.Element => (
     />
     <Input
       placeholder="Search"
-      // outlined
       onChange={(value): void => console.log(value)}
-      icon={<IconSearch />}
     />
   </View>
 )

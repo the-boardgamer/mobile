@@ -2,7 +2,7 @@ import React from 'react'
 import { PressableProps, TextInputProps } from 'react-native'
 import { DefaultTheme, styled } from 'styled-components/native'
 
-import { Props } from '.'
+import { Props } from './collapsible'
 import { ThemeType } from '@contexts/theme/types'
 
 interface StylesContainerProps extends TextInputProps {
@@ -23,8 +23,8 @@ export const Input = styled.TextInput<StylesInputProps>((props) => ({
   color: props.theme.palette.foreground.variant,
   flex: 1,
   flexDirection: 'row',
-  marginHorizontal: props.theme.size.size4,
-  marginVertical: '24px',
+  paddingHorizontal: props.theme.size.size4,
+  paddingVertical: '23.5px',
 }))
 
 export const Container = styled.View<StylesContainerProps>((props) => ({
@@ -34,7 +34,7 @@ export const Container = styled.View<StylesContainerProps>((props) => ({
   borderRadius: props.theme.radius.radius5,
   borderWidth: props.outlined ? '1px' : '0px',
   flexDirection: props.showInput ? 'row' : 'column',
-  fontSize: props.theme.typography.fontSize.fontSize4,
+  fontSize: props.theme.typography.fontSize.size4,
   justifyContent: 'space-between',
   margin: props.theme.size.size5,
   paddingHorizontal: props.theme.size.size5,
