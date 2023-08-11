@@ -14,6 +14,7 @@ export const Container = styled.View<StylesProps>((props) => ({
   padding: props.theme.size.size1,
   paddingLeft: props.theme.size.size4,
   paddingRight: props.theme.size.size4,
+  maxWidth: props.theme.size.size40,
 }))
 
 export const Label = styled.Text<StylesProps>((props) => ({

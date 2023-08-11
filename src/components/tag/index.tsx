@@ -10,6 +10,15 @@ export default function Tag(props: Props): JSX.Element {
   const { label, ...rest } = { ...props }
 
   return (
-    <Styled.Container {...rest}>{label && <Styled.Label>{label}</Styled.Label>}</Styled.Container>
+    <Styled.Container {...rest}>
+      {label && (
+        <Styled.Label
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >
+          {label}
+        </Styled.Label>
+      )}
+    </Styled.Container>
   )
 }
