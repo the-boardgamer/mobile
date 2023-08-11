@@ -30,7 +30,7 @@ export const Input = styled.TextInput<StylesInputProps>((props) => ({
 export const Container = styled.View<StylesContainerProps>((props) => ({
   alignSelf: 'flex-end',
   backgroundColor: props.theme.palette.background.variant,
-  borderColor: 'red',
+  borderColor: props.theme.palette.foreground.shade30,
   borderRadius: props.theme.radius.radius5,
   borderWidth: props.outlined ? '1px' : '0px',
   flexDirection: props.showInput ? 'row' : 'column',
