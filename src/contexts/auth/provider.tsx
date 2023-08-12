@@ -21,19 +21,19 @@ export const AuthProvider = ({ children }: AuthProviderType): JSX.Element => {
 
   const segments = useSegments()
 
-  React.useEffect(() => {
-    const inAuthGroup = segments[0] === '(auth)'
+  // React.useEffect(() => {
+  //   const inAuthGroup = segments[0] === '(auth)'
 
-    if (!user && !inAuthGroup && loadedFonts) {
-      setImmediate(() => {
-        router.replace('/(auth)/sign-in/')
-      })
-    } else if (user && inAuthGroup && loadedFonts) {
-      setImmediate(() => {
-        router.replace('/')
-      })
-    }
-  }, [user, segments, loadedFonts])
+  //   if (!user && !inAuthGroup && loadedFonts) {
+  //     setImmediate(() => {
+  //       router.replace('/(auth)/sign-in/')
+  //     })
+  //   } else if (user && inAuthGroup && loadedFonts) {
+  //     setImmediate(() => {
+  //       router.replace('/')
+  //     })
+  //   }
+  // }, [user, segments, loadedFonts])
 
   const value: AuthContextType = {
     signIn: () => {
