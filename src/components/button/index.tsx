@@ -1,8 +1,8 @@
 import { Animated, PressableProps } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
 import Icons from '@components/icons'
+import { useTheme } from '@contexts'
 
 export interface Props extends PressableProps {
   color?: 'primary' | 'secondary' | 'background'
@@ -18,7 +18,7 @@ const defaultValues: Props = {
 
 export default function Button(props: Props): JSX.Element {
   const { color, label, icon, variant, ...rest } = { ...defaultValues, ...props }
-  const theme = useTheme()
+  const { theme } = useTheme()
 
   const animated = new Animated.Value(1)
 

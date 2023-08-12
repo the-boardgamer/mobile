@@ -18,6 +18,7 @@ export const ThemeProvider = (props: { children: React.ReactNode }): JSX.Element
   }
 
   const value: ThemeContextType = {
+    theme,
     mode,
     setMode,
   }

@@ -1,7 +1,7 @@
 import { TouchableOpacityProps } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
+import { useTheme } from '@contexts'
 
 export interface Props extends TouchableOpacityProps {
   data?: string
@@ -12,7 +12,7 @@ export interface Props extends TouchableOpacityProps {
 export default function IconInformation(props: Props): JSX.Element {
   const { data, label, icon, onPress, ...rest } = props
 
-  const theme = useTheme()
+  const { theme } = useTheme()
 
   return (
     <Styled.Container

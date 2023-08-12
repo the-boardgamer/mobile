@@ -4,15 +4,17 @@ import { useTranslation } from 'react-i18next'
 
 import IconInformation from '@components/icon_information'
 import { IconStar } from '@components/icons'
+import { useTheme } from '@contexts'
 import { useAuth } from '@contexts'
 import changeLanguage from '@locales/changeLanguage'
 
 export default function SignIn(): JSX.Element {
   const { signIn } = useAuth()
   const { t } = useTranslation()
+  const { theme } = useTheme()
 
   return (
-    <View style={{ paddingTop: 200, backgroundColor: 'black', flex: 1 }}>
+    <View style={{ paddingTop: 200, backgroundColor: theme.palette.background.default, flex: 1 }}>
       <Text>{t('welcome')}</Text>
       <StatusBar style="auto" />
       <Text>{t('description')}</Text>
