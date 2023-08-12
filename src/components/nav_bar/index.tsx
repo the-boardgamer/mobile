@@ -3,7 +3,7 @@ import { Animated, Dimensions } from 'react-native'
 import { Tabs } from 'expo-router'
 
 import * as Styled from './styles'
-import Tab from '@components/bottom_tabs/tab'
+import Tab from '@components/nav_bar/tab'
 import { useTheme } from '@contexts'
 
 interface Props {
@@ -24,7 +24,7 @@ const defaultValues = {
   tabPadding: 20,
 }
 
-const BottomTabs = (props: Props): JSX.Element => {
+const NavBar = (props: Props): JSX.Element => {
   const { theme } = useTheme()
   const { padding, tabs, letterSize, iconSize, tabPadding } = { ...defaultValues, ...props }
 
@@ -96,4 +96,4 @@ const BottomTabs = (props: Props): JSX.Element => {
   )
 }
 
-export default BottomTabs
+export default NavBar
