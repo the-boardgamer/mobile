@@ -2,7 +2,7 @@ import Svg, { Path } from 'react-native-svg'
 
 import { defaultValues, Props } from '../types'
 
-function IconStar(props: Partial<Props>): JSX.Element {
+function IconStar(props: Props): JSX.Element {
   const { filled, color, ...rest } = { ...defaultValues, ...props }
 
   const filledSvg = (
