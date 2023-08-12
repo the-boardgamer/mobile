@@ -1,14 +1,11 @@
 import { Animated } from 'react-native'
 import { styled } from 'styled-components/native'
 
-import { ThemeType } from '@contexts/theme/types'
-
-interface BackgroundProps {
-  theme: ThemeType
+interface StyledProps {
   selected: boolean
 }
 
-export const Background = styled.Pressable<BackgroundProps>((props) => ({
+export const Container = styled.Pressable((props) => ({
   flex: 1,
   flexDirection: 'row',
   justifyContent: 'center',
@@ -21,19 +18,14 @@ export const Background = styled.Pressable<BackgroundProps>((props) => ({
   borderRadius: props.theme.radius.radius5,
 }))
 
-interface LabelProps {
-  selected: boolean
-  theme: ThemeType
-}
-
-export const Label = styled(Animated.Text)<LabelProps>((props) => ({
+export const Label = styled(Animated.Text)<StyledProps>((props) => ({
   color: props.selected ? props.theme.palette.primary.inverse : props.theme.palette.primary.default,
   fontSize: props.theme.typography.fontSize.size4,
   fontFamily: props.theme.typography.family.primary.bold,
   textTransform: 'uppercase',
 }))
 
-export const IconContainer = styled.View(() => ({
+export const IconContainer = styled.View({
   alignItens: 'center',
   justifyContent: 'center',
-}))
+})

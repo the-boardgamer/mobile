@@ -1,7 +1,8 @@
 import { Animated, PressableProps } from 'react-native'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
+import Icons from '@components/icons'
 
 export interface Props extends PressableProps {
   color?: 'primary' | 'secondary' | 'background'
@@ -17,7 +18,6 @@ const defaultValues: Props = {
 
 export default function Button(props: Props): JSX.Element {
   const { color, label, icon, variant, ...rest } = { ...defaultValues, ...props }
-
   const theme = useTheme()
 
   const animated = new Animated.Value(1)
@@ -38,6 +38,11 @@ export default function Button(props: Props): JSX.Element {
     }).start()
   }
 
+  const getIconColor = (): string => {
+    if (variant === 'filled') return theme.palette[color].inverse
+    return theme.palette[color].default
+  }
+
   return (
     <Animated.View
       style={{
@@ -52,11 +57,10 @@ export default function Button(props: Props): JSX.Element {
         {...rest}
       >
         {icon && (
-          <Styled.Icon
+          <Icons
             icon={icon}
-            theme={theme}
-            color={color}
-            variant={variant}
+            color={getIconColor()}
+            {...icon.props}
           />
         )}
 

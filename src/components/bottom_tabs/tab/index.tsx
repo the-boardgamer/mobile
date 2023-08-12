@@ -1,8 +1,8 @@
 import React from 'react'
 import { Animated } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
-import { useTheme } from '@contexts'
 import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
 
 export interface Props extends BottomTabBarButtonProps {
@@ -12,7 +12,7 @@ export interface Props extends BottomTabBarButtonProps {
 
 const Tab = (props: Props): JSX.Element => {
   const { label, icon, accessibilityState, onPress } = props
-  const { theme } = useTheme()
+  const theme = useTheme()
 
   const offsetValue = React.useRef(new Animated.Value(100)).current
   const selected: boolean = accessibilityState.selected
@@ -31,14 +31,14 @@ const Tab = (props: Props): JSX.Element => {
   }, [selected, offsetValue])
 
   return (
-    <Styled.Background
+    <Styled.Container
       onPress={onPress}
       selected={selected}
     >
       <Styled.IconContainer>
         {React.cloneElement(icon, {
-          width: 22,
-          height: 22,
+          width: 24,
+          height: 24,
           color: selected ? theme.palette.primary.inverse : theme.palette.primary.default,
           filled: selected,
         })}
@@ -53,7 +53,7 @@ const Tab = (props: Props): JSX.Element => {
           {label}
         </Styled.Label>
       )}
-    </Styled.Background>
+    </Styled.Container>
   )
 }
 

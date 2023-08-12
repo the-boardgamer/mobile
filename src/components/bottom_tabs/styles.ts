@@ -1,31 +1,25 @@
 import { Animated } from 'react-native'
 import { styled } from 'styled-components/native'
 
-import { ThemeType } from '@contexts/theme/types'
-
-interface Props {
-  theme: ThemeType
-}
-
-export const Selector = styled(Animated.View)<Props>((props) => ({
+export const Selector = styled(Animated.View)((props) => ({
   flex: 1,
   flexDirection: 'row',
   justifyContent: 'center',
-  height: props.theme.size.size13,
+  height: props.theme.size.size12,
   position: 'absolute',
   zIndex: -1,
-  bottom: '30px',
+  bottom: props.theme.size.size7,
   alignItems: 'center',
 }))
 
-export const Background = styled(Animated.View)<Props>((props) => ({
+export const Background = styled(Animated.View)((props) => ({
   backgroundColor: props.theme.palette.primary.default,
   position: 'absolute',
-  height: props.theme.size.size13,
+  height: '100%',
   borderRadius: props.theme.radius.radius5,
 }))
 
-export const Container = styled.View<Props>((props) => ({
+export const Container = styled.View((props) => ({
   flex: 1,
   backgroundColor: props.theme.palette.background.default,
 }))

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Animated, Dimensions } from 'react-native'
 import { Tabs } from 'expo-router'
+import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
 import Tab from '@components/bottom_tabs/tab'
-import { useTheme } from '@contexts'
 
 interface Props {
   tabs: {
@@ -19,13 +19,14 @@ interface Props {
 
 const defaultValues = {
   padding: 28,
-  iconSize: 22,
+  iconSize: 24,
   letterSize: 10,
   tabPadding: 20,
 }
 
 const BottomTabs = (props: Props): JSX.Element => {
-  const { theme } = useTheme()
+  const theme = useTheme()
+
   const { padding, tabs, letterSize, iconSize, tabPadding } = { ...defaultValues, ...props }
 
   const getWidth = (Dimensions.get('window').width - 2 * padding) / tabs.length
@@ -37,14 +38,13 @@ const BottomTabs = (props: Props): JSX.Element => {
   const screenOptions = {
     tabBarHideOnKeyboard: true,
     headerShown: true,
-    headerTransparent: true,
 
     tabBarStyle: {
-      paddingHorizontal: parseInt(theme.size.size7.split('px')[0], 10),
-      paddingVertical: parseInt(theme.size.size7.split('px')[0], 10),
+      paddingHorizontal: parseInt(theme.size.size7, 10),
+      paddingVertical: parseInt(theme.size.size7, 10),
       borderTopWidth: 0,
       backgroundColor: 'transparent',
-      height: parseInt(theme.size.size27.split('px')[0], 10),
+      height: parseInt(theme.size.size26, 10),
     },
   }
 
