@@ -10,7 +10,6 @@ export const ThemeProvider = (props: { children: React.ReactNode }): JSX.Element
   const [mode, setMode] = useState<ModeType>('dark')
 
   const theme: ThemeType = {
-    //   change with hook
     palette: dark,
 
     radius,
