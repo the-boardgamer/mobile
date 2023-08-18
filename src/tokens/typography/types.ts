@@ -1,4 +1,4 @@
-export interface Weighttype {
+export interface WeightType {
   bold: string
   semibold: string
   medium: string
@@ -6,9 +6,9 @@ export interface Weighttype {
   light: string
 }
 export interface FamilyType {
-  /** Quicksand */ primary: Weighttype
-  /** Manrope */ secondary: Weighttype
-  /** Arial */ tertiary: Weighttype
+  /** Quicksand */ primary: WeightType
+  /** Manrope */ secondary: WeightType
+  /** Arial */ tertiary: WeightType
 }
 
 export interface FontSizeType {

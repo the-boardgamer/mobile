@@ -1,8 +1,19 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+
+import { IconStar } from '@components/icons'
+import ListItem from '@components/list_item'
+import Tag from '@components/tag'
 
 const Home = (): JSX.Element => (
-  <View>
-    <Text>Home</Text>
+  <View style={{ flex: 1 }}>
+    <Tag label="Estrategia" />
+    <ListItem
+      title="Takenoko"
+      publisher="Galapagos Jogos"
+      icon={<IconStar />}
+      coverImage={require('../../temp/list_cover.png')}
+      foregroundImage={require('../../temp/list_foreground.png')}
+    />
   </View>
 )
 

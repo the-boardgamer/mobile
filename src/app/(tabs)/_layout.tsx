@@ -1,7 +1,7 @@
-import BottomTabs from '@components/bottom_tabs'
 import Calendar from '@components/icons/calendar'
 import Home from '@components/icons/home'
 import Person from '@components/icons/person'
+import NavBar from '@components/nav_bar'
 
 const _layout = (): JSX.Element => {
   const tabs = [
@@ -19,7 +19,7 @@ const _layout = (): JSX.Element => {
     },
   ]
 
-  return <BottomTabs tabs={tabs} />
+  return <NavBar tabs={tabs} />
 }
 
 export default _layout

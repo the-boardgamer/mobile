@@ -4,7 +4,8 @@ import { Tabs } from 'expo-router'
 import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
-import Tab from '@components/bottom_tabs/tab'
+import Tab from '@components/nav_bar/tab'
+import { useTheme } from '@contexts'
 
 interface Props {
   tabs: {
@@ -24,9 +25,8 @@ const defaultValues = {
   tabPadding: 20,
 }
 
-const BottomTabs = (props: Props): JSX.Element => {
-  const theme = useTheme()
-
+const NavBar = (props: Props): JSX.Element => {
+  const { theme } = useTheme()
   const { padding, tabs, letterSize, iconSize, tabPadding } = { ...defaultValues, ...props }
 
   const getWidth = (Dimensions.get('window').width - 2 * padding) / tabs.length
@@ -38,6 +38,7 @@ const BottomTabs = (props: Props): JSX.Element => {
   const screenOptions = {
     tabBarHideOnKeyboard: true,
     headerShown: true,
+    headerTransparent: false,
 
     tabBarStyle: {
       paddingHorizontal: parseInt(theme.size.size7, 10),
@@ -96,4 +97,4 @@ const BottomTabs = (props: Props): JSX.Element => {
   )
 }
 
-export default BottomTabs
+export default NavBar
