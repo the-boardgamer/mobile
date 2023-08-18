@@ -37,7 +37,7 @@ const NavBar = (props: Props): JSX.Element => {
   const screenOptions = {
     tabBarHideOnKeyboard: true,
     headerShown: true,
-    headerTransparent: true,
+    headerTransparent: false,
 
     tabBarStyle: {
       paddingHorizontal: parseInt(theme.size.size7.split('px')[0], 10),
