@@ -22,7 +22,6 @@ export const Title = styled.Text<StylesTextProps>((props) => ({
   color: props.theme.palette.foreground.default,
   fontSize: props.lines === 1 ? props.theme.size.size6 : props.theme.size.size5,
   fontFamily: props.theme.typography.family.primary.bold,
-  textAlign: 'start',
 }))
 
 export const Container = styled.View<StylesProps>((props) => ({
