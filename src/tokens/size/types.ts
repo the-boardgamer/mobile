@@ -27,4 +27,16 @@ export interface SizeType {
   /** 104px */ size26: string
   /** 108px */ size27: string
   /** 112px */ size28: string
+  /** 116px */ size29: string
+  /** 120px */ size30: string
+  /** 124px */ size31: string
+  /** 128px */ size32: string
+  /** 132px */ size33: string
+  /** 136px */ size34: string
+  /** 140px */ size35: string
+  /** 144px */ size36: string
+  /** 148px */ size37: string
+  /** 152px */ size38: string
+  /** 158px */ size39: string
+  /** 160px */ size40: string
 }

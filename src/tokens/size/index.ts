@@ -29,6 +29,18 @@ const size: SizeType = {
   size26: '104px',
   size27: '108px',
   size28: '112px',
+  size29: '116px',
+  size30: '120px',
+  size31: '124px',
+  size32: '128px',
+  size33: '132px',
+  size34: '136px',
+  size35: '140px',
+  size36: '144px',
+  size37: '148px',
+  size38: '152px',
+  size39: '156px',
+  size40: '160px',
 }
 
 export default size
