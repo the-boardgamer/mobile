@@ -1,41 +1,30 @@
-import React from 'react'
-import { DefaultTheme } from 'styled-components'
 import { styled } from 'styled-components/native'
 
 import { Props } from '.'
-import { ThemeType } from '@contexts/theme/types'
+import { ThemeType } from '@contexts'
 
-interface StylesProps {
-  color: Exclude<Props['color'], undefined>
+interface StyledProps {
+  color: Props['color']
   theme: ThemeType
-  variant: Exclude<Props['variant'], undefined>
+  variant: Props['variant']
 }
 
-const getBackground = (props: StylesProps): string => {
+const getBackground = (props: StyledProps): string => {
   const { theme, color, variant } = props
 
   if (variant === 'filled') return theme.palette[color].default
-  if (variant === 'shade') return theme.palette[color].shade5
+  if (variant === 'shade') return theme.palette[color].shade10
   return 'transparent'
 }
 
-const getColor = (props: StylesProps): string => {
+const getColor = (props: StyledProps): string => {
   const { theme, color, variant } = props
 
   if (variant === 'filled') return theme.palette[color].inverse
   return theme.palette[color].default
 }
 
-const getIconColor = (
-  color: Exclude<Props['color'], undefined>,
-  variant: Exclude<Props['variant'], undefined>,
-  theme: DefaultTheme,
-): string => {
-  if (variant === 'filled') return theme.palette[color].inverse
-  return theme.palette[color].default
-}
-
-export const Button = styled.Pressable<StylesProps>((props) => ({
+export const Button = styled.Pressable<StyledProps>((props) => ({
   backgroundColor: getBackground(props),
   padding: props.theme.size.size5,
   borderRadius: props.theme.radius.radius5,
@@ -49,25 +38,10 @@ export const Button = styled.Pressable<StylesProps>((props) => ({
     props.variant === 'outlined' ? `2px solid ${props.theme.palette[props.color].default}` : 'none',
 }))
 
-export const Label = styled.Text<StylesProps>((props) => ({
+export const Label = styled.Text<StyledProps>((props) => ({
   color: getColor(props),
   fontSize: props.theme.size.size5,
   fontWeight: 'bold',
   maxWidth: '80%',
   textAlign: 'center',
 }))
-
-export const Icon = ({
-  icon,
-  theme,
-  color,
-  variant,
-}: {
-  color: Exclude<Props['color'], undefined>
-  icon: Exclude<Props['icon'], undefined>
-  theme: DefaultTheme
-  variant: Exclude<Props['variant'], undefined>
-}): JSX.Element =>
-  React.cloneElement(icon, {
-    color: getIconColor(color, variant, theme),
-  })

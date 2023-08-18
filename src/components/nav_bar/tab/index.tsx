@@ -31,14 +31,11 @@ const Tab = (props: Props): JSX.Element => {
   }, [selected, offsetValue])
 
   return (
-    <Styled.Background
-      onPress={onPress}
-      selected={selected}
-    >
+    <Styled.Container onPress={onPress}>
       <Styled.IconContainer>
         {React.cloneElement(icon, {
-          width: 22,
-          height: 22,
+          width: 24,
+          height: 24,
           color: selected ? theme.palette.primary.inverse : theme.palette.primary.default,
           filled: selected,
         })}
@@ -53,7 +50,7 @@ const Tab = (props: Props): JSX.Element => {
           {label}
         </Styled.Label>
       )}
-    </Styled.Background>
+    </Styled.Container>
   )
 }
 
