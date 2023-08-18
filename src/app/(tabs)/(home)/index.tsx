@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 
-import { IconStar } from '@components/icons'
+import { IconStar } from '@components/icon'
 import ListItem from '@components/list_item'
 import Tag from '@components/tag'
 

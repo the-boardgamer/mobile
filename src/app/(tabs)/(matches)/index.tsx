@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 
 import Button from '@components/button'
-import { IconHome, IconStar } from '@components/icons'
+import { IconHome, IconStar } from '@components/icon'
 import Input from '@components/input'
 import { useTheme } from '@contexts'
 

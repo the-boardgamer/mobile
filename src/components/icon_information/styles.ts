@@ -1,6 +1,6 @@
 import { styled } from 'styled-components/native'
 
-import Icons from '@components/icons'
+import { default as MeepleIcon } from '@components/icon'
 
 export const Container = styled.TouchableOpacity((props) => ({
   flex: 1,
@@ -15,7 +15,7 @@ export const IconContainer = styled.View((props) => ({
   borderRadius: props.theme.size.size24,
 }))
 
-export const Icon = styled(Icons)((props) => ({
+export const Icon = styled(MeepleIcon)((props) => ({
   width: props.theme.size.size24,
   height: props.theme.size.size24,
 }))

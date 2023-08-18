@@ -3,7 +3,7 @@ import { Animated, TextInputProps } from 'react-native'
 import { Dimensions } from 'react-native'
 
 import * as Styled from './styles'
-import { IconSearch, IconStar } from '@components/icons'
+import { IconSearch, IconStar } from '@components/icon'
 import { useTheme } from '@contexts'
 
 export interface Props extends TextInputProps {

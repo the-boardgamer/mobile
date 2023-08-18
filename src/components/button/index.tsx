@@ -1,7 +1,7 @@
 import { Animated, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
-import Icons from '@components/icons'
+import Icon from '@components/icon'
 import { useTheme } from '@contexts'
 
 export interface Props extends PressableProps {
@@ -57,7 +57,7 @@ export default function Button(props: Props): JSX.Element {
         {...rest}
       >
         {icon && (
-          <Icons
+          <Icon
             icon={icon}
             color={getIconColor()}
             {...icon.props}

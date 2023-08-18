@@ -16,7 +16,7 @@ export const defaultValues: Props = {
   height: 24,
 }
 
-export default function Icons(props: Props): JSX.Element {
+export default function Icon(props: Props): JSX.Element {
   const { icon, ...rest } = { ...defaultValues, ...props }
   return React.cloneElement(icon, { ...rest })
 }
