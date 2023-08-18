@@ -15,7 +15,7 @@ module.exports = {
 
   overrides: [
     {
-      files: ['**/*.ts', '**/*.tsx'],
+      files: ['./src/**/*.ts', './src/**/*.tsx'],
       rules: {
         'arrow-body-style': 'error',
         '@typescript-eslint/explicit-function-return-type': 'error',
