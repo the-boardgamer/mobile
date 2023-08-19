@@ -1,20 +1,11 @@
 import React from 'react'
-import { ImageProps, TextProps } from 'react-native'
+import { TextProps } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { Props } from '.'
 import { ThemeType } from '@contexts/theme/types'
 
-interface StylesProps {
-  theme: ThemeType
-}
-
-interface StylesImageProps extends ImageProps {
-  theme: ThemeType
-}
-
 interface StylesTextProps extends TextProps {
-  theme: ThemeType
   lines: number
 }
 
@@ -25,17 +16,17 @@ export const Title = styled.Text<StylesTextProps>((props) => ({
   textAlign: 'start',
 }))
 
-export const Container = styled.View<StylesProps>((props) => ({
+export const Container = styled.TouchableOpacity((props) => ({
   backgroundColor: props.theme.palette.background.variant,
   borderRadius: props.theme.radius.radius5,
   flexDirection: 'row',
 }))
 
-export const StartContainer = styled.View<StylesProps>(() => ({
+export const StartContainer = styled.View(() => ({
   position: 'relative',
 }))
 
-export const ForegroundImage = styled.View<StylesProps>(() => ({
+export const ForegroundImage = styled.View(() => ({
   position: 'absolute',
   flex: 1,
   width: '100%',
@@ -44,14 +35,14 @@ export const ForegroundImage = styled.View<StylesProps>(() => ({
   alignItems: 'center',
 }))
 
-export const CoverImage = styled.Image<StylesImageProps>((props) => ({
+export const CoverImage = styled.Image((props) => ({
   borderTopLeftRadius: props.theme.radius.radius5,
   borderBottomLeftRadius: props.theme.radius.radius5,
   width: '200px',
   height: '120px',
 }))
 
-export const EndContainer = styled.View<StylesProps>((props) => ({
+export const EndContainer = styled.View((props) => ({
   paddingTop: props.theme.size.size5,
   paddingBottom: props.theme.size.size5,
   paddingRight: props.theme.size.size4,
@@ -62,12 +53,12 @@ export const EndContainer = styled.View<StylesProps>((props) => ({
   gap: '6px',
 }))
 
-export const PublisherContainer = styled.View<StylesProps>((props) => ({
+export const PublisherContainer = styled.View((props) => ({
   flexDirection: 'row',
   gap: props.theme.size.size2,
 }))
 
-export const PublisherName = styled.Text<StylesProps>((props) => ({
+export const PublisherName = styled.Text((props) => ({
   color: props.theme.palette.foreground.default,
   fontSize: props.theme.size.size4,
   fontFamily: props.theme.typography.family.primary.regular,

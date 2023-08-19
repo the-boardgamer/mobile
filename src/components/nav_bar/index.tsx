@@ -1,7 +1,6 @@
 import React from 'react'
 import { Animated, Dimensions } from 'react-native'
 import { Tabs } from 'expo-router'
-import { useTheme } from 'styled-components/native'
 
 import * as Styled from './styles'
 import Tab from '@components/nav_bar/tab'
