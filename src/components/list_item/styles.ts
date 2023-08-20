@@ -16,7 +16,7 @@ export const Title = styled.Text<StylesTextProps>((props) => ({
   textAlign: 'start',
 }))
 
-export const Container = styled.TouchableOpacity((props) => ({
+export const Button = styled.Pressable((props) => ({
   backgroundColor: props.theme.palette.background.variant,
   borderRadius: props.theme.radius.radius5,
   flexDirection: 'row',
