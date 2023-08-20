@@ -12,6 +12,7 @@ interface StyledProps {
 const getBackground = (props: StyledProps): string => {
   const { theme, color, variant } = props
 
+  if (variant === 'filled' && color === 'background') return theme.palette[color].variant
   if (variant === 'filled') return theme.palette[color].default
   if (variant === 'shade') return theme.palette[color].shade10
   return 'transparent'

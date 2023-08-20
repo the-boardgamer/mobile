@@ -38,10 +38,8 @@ export default function Button(props: Props): JSX.Element {
     }).start()
   }
 
-  const getIconColor = (): string => {
-    if (variant === 'filled') return theme.palette[color].inverse
-    return theme.palette[color].default
-  }
+  const getIconColor =
+    variant === 'filled' ? theme.palette[color].inverse : theme.palette[color].default
 
   return (
     <Animated.View
@@ -59,7 +57,7 @@ export default function Button(props: Props): JSX.Element {
         {icon && (
           <Icon
             icon={icon}
-            color={getIconColor()}
+            color={getIconColor}
             {...icon.props}
           />
         )}
