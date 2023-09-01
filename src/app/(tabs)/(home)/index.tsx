@@ -1,9 +1,19 @@
+/* eslint-disable react-native/no-inline-styles */
+import { ScrollView, View } from 'react-native'
+
 import Button from '@components/button'
+import GridItem from '@components/grid_item'
 import Header from '@components/header'
 import { IconStar } from '@components/icon'
-import ListItem from '@components/list_item'
-import Tag from '@components/tag'
-import * as Global from '@styles/global'
+import Global from '@styles'
+
+const covers = [
+  require('../../../assets/temp/santorini.png'),
+  require('../../../assets/temp/montmartre.png'),
+  require('../../../assets/temp/takenoko.png'),
+  require('../../../assets/temp/ticket.png'),
+  require('../../../assets/temp/carcassone.png'),
+]
 
 const Home = (): JSX.Element => (
   <Global.Screen>
@@ -18,14 +28,26 @@ const Home = (): JSX.Element => (
       </Header.TextContent>
     </Header.Root>
 
-    <Tag label="Estrategia" />
-    <ListItem
-      title="Takenoko"
-      publisher="Galapagos Jogos"
-      icon={<IconStar />}
-      coverImage={require('../../../assets/temp/list_cover.png')}
-      foregroundImage={require('../../../assets/temp/list_foreground.png')}
-    />
+    <ScrollView>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, padding: 10 }}>
+          {covers.map((cover, i) => (
+            <GridItem
+              key={`${cover}-${i}`}
+              image={cover}
+            />
+          ))}
+        </View>
+        <View style={{ flex: 1, padding: 10 }}>
+          {covers.reverse().map((cover, i) => (
+            <GridItem
+              key={`${cover}-${i}`}
+              image={cover}
+            />
+          ))}
+        </View>
+      </View>
+    </ScrollView>
   </Global.Screen>
 )
 
