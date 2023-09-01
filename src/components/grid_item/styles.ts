@@ -7,5 +7,4 @@ export const Image = styled(Animated.Image)((props) => ({
   width: '100%',
   flex: 1,
   height: 'auto',
-  marginBottom: props.theme.size.size5,
 }))

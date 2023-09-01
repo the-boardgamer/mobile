@@ -1,5 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 
 import Button from '@components/button'
 import GridItem from '@components/grid_item'
@@ -16,7 +16,7 @@ const covers = [
 ]
 
 const Home = (): JSX.Element => (
-  <Global.Screen>
+  <Global.Screen edges={['top', 'left', 'right']}>
     <Header.Root>
       <Button
         color="background"
@@ -28,26 +28,30 @@ const Home = (): JSX.Element => (
       </Header.TextContent>
     </Header.Root>
 
-    <ScrollView>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ flex: 1, padding: 10 }}>
-          {covers.map((cover, i) => (
-            <GridItem
-              key={`${cover}-${i}`}
-              image={cover}
-            />
-          ))}
-        </View>
-        <View style={{ flex: 1, padding: 10 }}>
-          {covers.reverse().map((cover, i) => (
-            <GridItem
-              key={`${cover}-${i}`}
-              image={cover}
-            />
-          ))}
-        </View>
-      </View>
-    </ScrollView>
+    <View style={{ flex: 1, flexDirection: 'row', gap: 20, marginHorizontal: 20 }}>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={covers}
+        ItemSeparatorComponent={(): JSX.Element => <View style={{ height: 20 }} />}
+        renderItem={({ item, index }): JSX.Element => (
+          <GridItem
+            key={`${item}-${index}`}
+            image={item}
+          />
+        )}
+      />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={(): JSX.Element => <View style={{ height: 20 }} />}
+        data={[...covers].reverse()}
+        renderItem={({ item, index }): JSX.Element => (
+          <GridItem
+            key={`${item}-${index}`}
+            image={item}
+          />
+        )}
+      />
+    </View>
   </Global.Screen>
 )
 
