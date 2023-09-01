@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
-export function useButtonAnimation(
+export function useShrinkAnimation(
   initialScale = 1,
   toValue = 0.98,
   speed = 10,
