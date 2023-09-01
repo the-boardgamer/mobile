@@ -1,5 +1,5 @@
-import { defaultValues, Props } from '.'
 import * as Styled from './styles'
+import { defaultValues, Props } from './types'
 import { useTheme } from '@contexts'
 
 export default function StandardInput(props: Props): JSX.Element {
