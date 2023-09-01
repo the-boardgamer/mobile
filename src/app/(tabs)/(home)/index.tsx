@@ -12,10 +12,10 @@ const Home = (): JSX.Element => (
         color="background"
         icon={<IconStar />}
       />
-      <Header.Content
-        title="Hey Guilherme!"
-        description="Explore top rated games by category"
-      />
+      <Header.TextContent>
+        <Header.Title>Hey Guilherme!</Header.Title>
+        <Header.Description>Explore top rated games by category</Header.Description>
+      </Header.TextContent>
     </Header.Root>
 
     <Tag label="Estrategia" />
