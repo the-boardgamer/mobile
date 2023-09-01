@@ -5,11 +5,11 @@ import { styled } from 'styled-components/native'
 import { Props } from '.'
 import { ThemeType } from '@contexts/theme/types'
 
-interface StylesTextProps extends TextProps {
+interface StyledTextProps extends TextProps {
   lines: number
 }
 
-export const Title = styled.Text<StylesTextProps>((props) => ({
+export const Title = styled.Text<StyledTextProps>((props) => ({
   color: props.theme.palette.foreground.default,
   fontSize: props.lines === 1 ? props.theme.size.size6 : props.theme.size.size5,
   fontFamily: props.theme.typography.family.primary.bold,
