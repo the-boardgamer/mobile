@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#31213B"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -27,7 +29,10 @@
       "output": "static",
       "bundler": "metro"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      "expo-localization"
+    ],
     "experiments": {
       "tsconfigPaths": true,
       "typedRoutes": true
