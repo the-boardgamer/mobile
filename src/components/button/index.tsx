@@ -3,7 +3,7 @@ import { Animated, PressableProps } from 'react-native'
 import * as Styled from './styles'
 import Icon from '@components/icon'
 import { useTheme } from '@contexts'
-import { useButtonAnimation } from '@hooks/useButtonAnimation'
+import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
   color?: 'primary' | 'secondary' | 'background'
@@ -21,7 +21,7 @@ export default function Button(props: Props): JSX.Element {
   const { color, label, icon, variant, ...rest } = { ...defaultValues, ...props }
   const { theme } = useTheme()
 
-  const { animatedScale, handlePressIn, handlePressOut } = useButtonAnimation()
+  const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
   const getIconColor = (): string => {
     if (variant === 'filled') return theme.palette[color].inverse

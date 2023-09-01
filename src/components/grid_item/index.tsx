@@ -1,7 +1,7 @@
 import { Image, ImageProps, Pressable } from 'react-native'
 
 import * as Styled from './styles'
-import { useButtonAnimation } from '@hooks/useButtonAnimation'
+import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props {
   image: ImageProps
@@ -10,7 +10,7 @@ export interface Props {
 export default function GridItem(props: Props): JSX.Element {
   const { image, ...rest } = { ...props }
 
-  const { animatedScale, handlePressIn, handlePressOut } = useButtonAnimation()
+  const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
   const img = Image.resolveAssetSource(image)
   const aspectRatio = img.width / img.height

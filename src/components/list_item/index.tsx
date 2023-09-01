@@ -3,7 +3,7 @@ import { Animated, Image, ImageProps, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import { useTheme } from '@contexts'
-import { useButtonAnimation } from '@hooks/useButtonAnimation'
+import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
   coverImage: ImageProps
@@ -18,7 +18,7 @@ export default function ListItem(props: Props): JSX.Element {
   const { theme } = useTheme()
 
   const [lines, setLines] = React.useState()
-  const { animatedScale, handlePressIn, handlePressOut } = useButtonAnimation()
+  const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
   const handleTextLayout = (event): void => {
     setLines(event.nativeEvent.lines.length)
