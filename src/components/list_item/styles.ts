@@ -20,6 +20,8 @@ export const Button = styled.Pressable((props) => ({
   backgroundColor: props.theme.palette.background.variant,
   borderRadius: props.theme.radius.radius5,
   flexDirection: 'row',
+  marginVertical: props.theme.size.size2,
+  marginHorizontal: '20px',
 }))
 
 export const StartContainer = styled.View(() => ({
