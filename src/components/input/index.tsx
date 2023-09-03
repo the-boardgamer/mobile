@@ -2,6 +2,7 @@ import { TextInputProps } from 'react-native'
 
 import CollapsibleInput from './collapsible'
 import StandardInput from './standard'
+import { defaultValues } from './utils'
 
 export interface Props extends TextInputProps {
   collapsible?: boolean
@@ -9,11 +10,6 @@ export interface Props extends TextInputProps {
   onChange?: (value) => void
   outlined?: boolean
   placeholder?: string
-}
-
-export const defaultValues: Props = {
-  collapsible: false,
-  outlined: false,
 }
 
 export default function Input(props: Props): JSX.Element {
