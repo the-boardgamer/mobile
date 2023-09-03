@@ -4,7 +4,8 @@ import { FlatList } from 'react-native-gesture-handler'
 import Button from '@components/button'
 import GridItem from '@components/grid_item'
 import Header from '@components/header'
-import { IconStar } from '@components/icon'
+import { IconCompass, IconShelf, IconStar } from '@components/icon'
+import NavSelector from '@components/nav_selector'
 import Global from '@styles'
 
 const covers = [
@@ -52,6 +53,11 @@ const Home = (): JSX.Element => (
         )}
       />
     </View>
+    <NavSelector
+      defaultSelected={'trailing'}
+      leading={{ label: 'shelf', icon: <IconShelf /> }}
+      trailing={{ label: 'discover', icon: <IconCompass /> }}
+    />
   </Global.Screen>
 )
 
