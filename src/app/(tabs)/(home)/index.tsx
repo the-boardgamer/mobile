@@ -3,7 +3,7 @@ import { Animated, Easing } from 'react-native'
 
 import Button from '@components/button'
 import Header from '@components/header'
-import { IconSearch } from '@components/icon'
+import { IconGrid, IconList } from '@components/icon'
 import ListView from '@components/list_view'
 import MasonryView from '@components/masonry_view'
 import Global from '@styles'
@@ -38,7 +38,7 @@ const data = [
     image: require('../../../assets/temp/ticket.png'),
     cover: require('../../../assets/temp/list_cover.png'),
     foreground: require('../../../assets/temp/list_foreground.png'),
-    title: 'Ticket to Ride - bug',
+    title: 'Ticket to Ride',
     publisher: 'Galapagos Jogos',
   },
   {
@@ -81,7 +81,7 @@ const Home = (): JSX.Element => {
     opacityValue.resetAnimation()
     Animated.timing(opacityValue, {
       toValue: 1,
-      duration: 800,
+      duration: 500,
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
@@ -97,7 +97,7 @@ const Home = (): JSX.Element => {
         </Header.TextContent>
         <Button
           color="background"
-          icon={<IconSearch />}
+          icon={view === 'masonry' ? <IconGrid /> : <IconList />}
           onPress={handleOnPressView}
         />
       </Header.Root>

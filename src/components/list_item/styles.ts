@@ -1,17 +1,12 @@
 import React from 'react'
-import { TextProps } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { Props } from '.'
 import { ThemeType } from '@contexts/theme/types'
 
-interface StyledTextProps extends TextProps {
-  lines: number
-}
-
-export const Title = styled.Text<StyledTextProps>((props) => ({
+export const Title = styled.Text((props) => ({
   color: props.theme.palette.foreground.default,
-  fontSize: props.lines === 1 ? props.theme.size.size6 : props.theme.size.size5,
+  fontSize: props.theme.size.size6,
   fontFamily: props.theme.typography.family.primary.bold,
   textAlign: 'left',
 }))
@@ -40,7 +35,7 @@ export const ForegroundImage = styled.View(() => ({
 export const CoverImage = styled.Image((props) => ({
   borderTopLeftRadius: props.theme.radius.radius5,
   borderBottomLeftRadius: props.theme.radius.radius5,
-  width: '200px',
+  width: '180px',
   height: '120px',
 }))
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Animated, Image, ImageProps, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
@@ -17,12 +16,7 @@ export default function ListItem(props: Props): JSX.Element {
   const { icon, coverImage, foregroundImage, publisher, title, ...rest } = { ...props }
   const { theme } = useTheme()
 
-  const [lines, setLines] = React.useState()
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
-
-  const handleTextLayout = (event): void => {
-    setLines(event.nativeEvent.lines.length)
-  }
 
   return (
     <Animated.View style={{ transform: [{ scale: animatedScale }] }}>
@@ -43,9 +37,7 @@ export default function ListItem(props: Props): JSX.Element {
         </Styled.StartContainer>
         <Styled.EndContainer>
           <Styled.Title
-            onTextLayout={handleTextLayout}
             numberOfLines={2}
-            lines={lines}
             ellipsizeMode="tail"
           >
             {title}
