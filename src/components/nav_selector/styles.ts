@@ -9,8 +9,8 @@ export const Container = styled.Pressable((props) => ({
   alignSelf: 'center',
   padding: props.theme.size.size1,
   borderRadius: props.theme.radius.radius7,
-  shadowColor: props.theme.palette.background.default,
-  shadowOpacity: '0.5',
+  shadowColor: props.theme.palette.background.variant,
+  shadowOpacity: '1',
   shadowRadius: props.theme.radius.radius5,
   elevation: '24',
 }))

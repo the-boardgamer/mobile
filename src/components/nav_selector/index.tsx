@@ -16,23 +16,22 @@ const defaultValues: Partial<Props> = {
 const NavSelector = (props: Props): JSX.Element => {
   const { leading, trailing, defaultSelected, onPress } = { ...defaultValues, ...props }
 
-  const [selected, setSelected] = React.useState(defaultSelected === 'leading' ? 0 : 1)
-  const [leadingWidth, setLeadingWidth] = React.useState(1)
-  const [trailingWidth, setTrailingWidth] = React.useState(1)
+  const [selected, setSelected] = React.useState<Props['defaultSelected']>(defaultSelected)
+  const [widths, setWidths] = React.useState({ leading: 1, trailing: 1 })
 
   const labelOffsetValue = React.useRef(new Animated.Value(0)).current
 
   React.useEffect(() => {
     Animated.spring(labelOffsetValue, {
-      toValue: selected === 0 ? 0 : leadingWidth,
+      toValue: selected === 'leading' ? 0 : widths.leading,
       useNativeDriver: true,
     }).start()
-  }, [selected, labelOffsetValue, leadingWidth])
+  }, [selected, labelOffsetValue, widths])
 
   const handlePress = (event: GestureResponderEvent): void => {
-    setSelected((value): number => {
-      if (value === 0) return 1
-      return 0
+    setSelected((value) => {
+      if (value === 'leading') return 'trailing'
+      return 'leading'
     })
     onPress?.(event)
   }
@@ -40,20 +39,24 @@ const NavSelector = (props: Props): JSX.Element => {
   return (
     <Styled.Container onPress={handlePress}>
       <TabSelector
-        onLayout={(e): void => setLeadingWidth(e?.nativeEvent?.layout.width)}
-        selected={selected === 0}
+        onLayout={(e): void => {
+          setWidths((value) => ({ ...value, leading: e?.nativeEvent?.layout.width }))
+        }}
+        selected={selected === 'leading'}
         label={leading.label}
         icon={leading.icon}
       />
       <TabSelector
-        onLayout={(e): void => setTrailingWidth(e?.nativeEvent?.layout.width)}
-        selected={selected === 1}
+        onLayout={(e): void => {
+          setWidths((value) => ({ ...value, trailing: e?.nativeEvent?.layout.width }))
+        }}
+        selected={selected === 'trailing'}
         label={trailing.label}
         icon={trailing.icon}
       />
       <Styled.Selector
         style={{
-          width: selected === 0 ? leadingWidth : trailingWidth,
+          width: selected === 'leading' ? widths.leading : widths.trailing,
           transform: [{ translateX: labelOffsetValue }],
         }}
       >

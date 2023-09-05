@@ -54,7 +54,6 @@ const Home = (): JSX.Element => (
       />
     </View>
     <NavSelector
-      defaultSelected={'trailing'}
       leading={{ label: 'shelf', icon: <IconShelf /> }}
       trailing={{ label: 'discover', icon: <IconCompass /> }}
     />
