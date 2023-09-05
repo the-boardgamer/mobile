@@ -17,16 +17,18 @@ const NavSelector = (props: Props): JSX.Element => {
   const { leading, trailing, defaultSelected, onPress } = { ...defaultValues, ...props }
 
   const [selected, setSelected] = React.useState<Props['defaultSelected']>(defaultSelected)
-  const [widths, setWidths] = React.useState({ leading: 1, trailing: 1 })
+
+  const [leadingWidth, setLeadingWidth] = React.useState(1)
+  const [trailingWidth, setTrailingWidth] = React.useState(1)
 
   const labelOffsetValue = React.useRef(new Animated.Value(0)).current
 
   React.useEffect(() => {
     Animated.spring(labelOffsetValue, {
-      toValue: selected === 'leading' ? 0 : widths.leading,
+      toValue: selected === 'leading' ? 0 : leadingWidth,
       useNativeDriver: true,
     }).start()
-  }, [selected, labelOffsetValue, widths])
+  }, [selected, labelOffsetValue, leadingWidth])
 
   const handlePress = (event: GestureResponderEvent): void => {
     setSelected((value) => {
@@ -40,7 +42,7 @@ const NavSelector = (props: Props): JSX.Element => {
     <Styled.Container onPress={handlePress}>
       <TabSelector
         onLayout={(e): void => {
-          setWidths((value) => ({ ...value, leading: e?.nativeEvent?.layout.width }))
+          setLeadingWidth(e?.nativeEvent?.layout.width)
         }}
         selected={selected === 'leading'}
         label={leading.label}
@@ -48,7 +50,7 @@ const NavSelector = (props: Props): JSX.Element => {
       />
       <TabSelector
         onLayout={(e): void => {
-          setWidths((value) => ({ ...value, trailing: e?.nativeEvent?.layout.width }))
+          setTrailingWidth(e?.nativeEvent?.layout.width)
         }}
         selected={selected === 'trailing'}
         label={trailing.label}
@@ -56,7 +58,7 @@ const NavSelector = (props: Props): JSX.Element => {
       />
       <Styled.Selector
         style={{
-          width: selected === 'leading' ? widths.leading : widths.trailing,
+          width: selected === 'leading' ? leadingWidth : trailingWidth,
           transform: [{ translateX: labelOffsetValue }],
         }}
       >
