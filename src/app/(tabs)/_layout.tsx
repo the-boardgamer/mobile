@@ -4,20 +4,20 @@ import Person from '@components/icon/person'
 import NavBar from '@components/nav_bar'
 
 const _layout = (): JSX.Element => {
-  const tabs = [
-    {
+  const tabs = {
+    home: {
       label: 'home',
       icon: <Home />,
     },
-    {
+    matches: {
       label: 'matches',
       icon: <Calendar />,
     },
-    {
+    profile: {
       label: 'profile',
       icon: <Person />,
     },
-  ]
+  }
 
   return <NavBar tabs={tabs} />
 }

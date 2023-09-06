@@ -1,4 +1,4 @@
-import { Animated } from 'react-native'
+import { Animated, Platform } from 'react-native'
 import { styled } from 'styled-components/native'
 
 interface StyledProps {
@@ -16,8 +16,11 @@ export const Container = styled.View((props) => ({
 }))
 
 export const Label = styled(Animated.Text)<StyledProps>((props) => ({
-  color: props.selected ? props.theme.palette.primary.inverse : props.theme.palette.primary.default,
+  color: props.selected ? props.theme.palette.primary.inverse : 'transparent',
   fontSize: props.theme.typography.fontSize.size3,
   fontFamily: props.theme.typography.family.primary.bold,
   textTransform: 'uppercase',
+  ...(Platform.OS === 'android' && {
+    paddingBottom: '2px',
+  }),
 }))
