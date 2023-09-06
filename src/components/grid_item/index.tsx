@@ -1,9 +1,9 @@
-import { Image, ImageProps, Pressable } from 'react-native'
+import { Image, ImageProps, Pressable, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
-export interface Props {
+export interface Props extends PressableProps {
   image: ImageProps
 }
 
