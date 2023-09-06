@@ -3,7 +3,7 @@ import { Animated, Dimensions, Platform } from 'react-native'
 import { Tabs } from 'expo-router'
 
 import * as Styled from './styles'
-import Tab from './tab'
+import Tab from './tab_bar'
 import { useTheme } from '@contexts'
 
 interface Props {

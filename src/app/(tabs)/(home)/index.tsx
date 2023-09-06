@@ -61,7 +61,7 @@ const Home = (): JSX.Element => {
   const firstRenderAnimation = React.useCallback(() => {
     Animated.timing(transformValue, {
       toValue: 1,
-      duration: 800,
+      duration: 200,
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
@@ -121,6 +121,8 @@ const Home = (): JSX.Element => {
       <NavSelector
         leading={{ label: 'shelf', icon: <IconShelf /> }}
         trailing={{ label: 'discover', icon: <IconCompass /> }}
+        onPress={(_, selected): void => setView(selected === 'shelf' ? 'list' : 'masonry')}
+        defaultSelected="discover"
       />
     </Global.Screen>
   )

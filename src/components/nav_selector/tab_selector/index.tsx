@@ -8,10 +8,11 @@ export interface Props extends ViewProps {
   label: string
   icon: JSX.Element
   selected: boolean
+  getWidth?: (width: number) => void
 }
 
 const TabSelector = (props: Props): JSX.Element => {
-  const { label, icon, selected, ...rest } = props
+  const { label, icon, selected, getWidth, ...rest } = props
   const { theme } = useTheme()
   const offsetValue = React.useRef(new Animated.Value(100)).current
 
@@ -29,7 +30,12 @@ const TabSelector = (props: Props): JSX.Element => {
   }, [selected, offsetValue])
 
   return (
-    <Styled.Container {...rest}>
+    <Styled.Container
+      onLayout={(e): void => {
+        getWidth(e?.nativeEvent?.layout.width)
+      }}
+      {...rest}
+    >
       {!selected &&
         React.cloneElement(icon, {
           width: 18,
