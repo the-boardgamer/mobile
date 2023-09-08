@@ -86,6 +86,7 @@ const Home = (): JSX.Element => {
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
+
     setView((prev) => (prev === 'masonry' ? 'list' : 'masonry'))
   }
 
@@ -121,7 +122,7 @@ const Home = (): JSX.Element => {
       <NavSelector
         leading={{ label: 'shelf', icon: <IconShelf /> }}
         trailing={{ label: 'discover', icon: <IconCompass /> }}
-        onPress={(_, selected): void => setView(selected === 'shelf' ? 'list' : 'masonry')}
+        onPress={(): void => undefined}
         defaultSelected="discover"
       />
     </Global.Screen>

@@ -1,4 +1,5 @@
-import { Animated, PressableProps } from 'react-native'
+import React from 'react'
+import { Animated, Easing, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import Icon from '@components/icon'
@@ -23,6 +24,18 @@ export default function Button(props: Props): JSX.Element {
 
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
+  const iconOpacityValue = React.useRef(new Animated.Value(0)).current
+
+  React.useEffect(() => {
+    iconOpacityValue.resetAnimation()
+    Animated.timing(iconOpacityValue, {
+      toValue: 1,
+      duration: 300,
+      easing: Easing.ease,
+      useNativeDriver: false,
+    }).start()
+  }, [icon, iconOpacityValue])
+
   const getIconColor =
     variant === 'filled' ? theme.palette[color].inverse : theme.palette[color].default
 
@@ -40,11 +53,17 @@ export default function Button(props: Props): JSX.Element {
         {...rest}
       >
         {icon && (
-          <Icon
-            icon={icon}
-            color={getIconColor}
-            {...icon.props}
-          />
+          <Animated.View
+            style={{
+              opacity: iconOpacityValue,
+            }}
+          >
+            <Icon
+              icon={icon}
+              color={getIconColor}
+              {...icon.props}
+            />
+          </Animated.View>
         )}
 
         {label && (
