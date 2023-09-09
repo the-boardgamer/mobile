@@ -1,4 +1,5 @@
 import { FlatList, ImageProps, RefreshControl, View, ViewProps } from 'react-native'
+import { router } from 'expo-router'
 
 import ListItem from '@components/list_item'
 
@@ -37,6 +38,7 @@ const ListView = (props: Props): JSX.Element => {
             foregroundImage={item.foreground}
             publisher={item.publisher}
             title={item.title}
+            onPress={(): void => router.push('/game_details/')}
           />
         )}
         {...rest}

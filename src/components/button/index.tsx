@@ -11,20 +11,24 @@ export interface Props extends PressableProps {
   icon?: JSX.Element
   label?: string
   variant?: 'filled' | 'shade' | 'outlined' | 'ghost'
+  animation?: boolean
 }
 
 const defaultValues: Props = {
   color: 'primary',
   variant: 'filled',
+  animation: true,
 }
 
 export default function Button(props: Props): JSX.Element {
-  const { color, label, icon, variant, ...rest } = { ...defaultValues, ...props }
+  const { color, label, icon, variant, animation, ...rest } = { ...defaultValues, ...props }
   const { theme } = useTheme()
 
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
   const iconOpacityValue = React.useRef(new Animated.Value(0)).current
+
+  const animate = animation && icon
 
   React.useEffect(() => {
     iconOpacityValue.resetAnimation()
@@ -34,7 +38,7 @@ export default function Button(props: Props): JSX.Element {
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
-  }, [icon, iconOpacityValue])
+  }, [animate, iconOpacityValue])
 
   const getIconColor =
     variant === 'filled' ? theme.palette[color].inverse : theme.palette[color].default

@@ -1,4 +1,5 @@
 import { ImageProps, RefreshControl, ScrollViewProps, useWindowDimensions } from 'react-native'
+import { router } from 'expo-router'
 
 import * as Styled from './styles'
 import GridItem from '@components/grid_item'
@@ -38,6 +39,7 @@ const MasonryView = (props: Props): JSX.Element => {
                 <GridItem
                   image={game.image}
                   key={game.id}
+                  onPress={(): void => router.push('/game_details/')}
                 />
               ))}
           </Styled.Column>
