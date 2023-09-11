@@ -1,14 +1,12 @@
-import { ImageProps, RefreshControl, ScrollViewProps, useWindowDimensions } from 'react-native'
+import { RefreshControl, ScrollViewProps, useWindowDimensions } from 'react-native'
 import { router } from 'expo-router'
 
 import * as Styled from './styles'
 import GridItem from '@components/grid_item'
+import { ItemType } from '@components/list_view'
 
 export interface Props extends ScrollViewProps {
-  data: Array<{
-    image: ImageProps
-    id: number
-  }>
+  data: Array<ItemType>
 }
 
 const MasonryView = (props: Props): JSX.Element => {
@@ -35,11 +33,22 @@ const MasonryView = (props: Props): JSX.Element => {
           <Styled.Column key={`column_${colIndex}`}>
             {data
               .filter((_, index) => index % numColumns === colIndex)
-              .map((game) => (
+              .map((item) => (
                 <GridItem
-                  image={game.image}
-                  key={game.id}
-                  onPress={(): void => router.push('/game_details/')}
+                  image={item.image}
+                  key={item.id}
+                  onPress={(): void =>
+                    router.push({
+                      pathname: `/game_details/`,
+                      params: {
+                        cover: item.cover,
+                        description: item.description,
+                        foreground: item.foreground,
+                        information: JSON.stringify(item.information),
+                        tags: JSON.stringify(item.tags),
+                      },
+                    })
+                  }
                 />
               ))}
           </Styled.Column>
