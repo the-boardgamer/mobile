@@ -17,14 +17,36 @@ const data = [
     foreground: require('../../../assets/temp/list_foreground.png'),
     title: 'Santorini',
     publisher: 'Galapagos Jogos',
+    information: [
+      { data: '2 - 5', label: 'players', key: 'meeple' },
+      { data: '10', label: 'years old', key: 'age' },
+      { data: '5', label: 'expansions', key: 'meeple' },
+      { data: '5', label: 'setup', key: 'setup' },
+      { data: '40', label: 'matches', key: 'time' },
+      { data: '5', label: 'downtime', key: 'downtime' },
+    ],
+    tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
+    description:
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
   },
   {
     id: 1,
     image: require('../../../assets/temp/montmartre.png'),
-    cover: require('../../../assets/temp/list_cover.png'),
-    foreground: require('../../../assets/temp/list_foreground.png'),
-    title: 'Montmartre',
+    cover: require('../../../assets/temp/azul_cover.png'),
+    foreground: require('../../../assets/temp/ticket_foreground.png'),
+    title: 'Azul',
     publisher: 'Galapagos Jogos',
+    information: [
+      { data: '2 - 5', label: 'players', key: 'meeple' },
+      { data: '10', label: 'years old', key: 'age' },
+      { data: '5', label: 'expansions', key: 'meeple' },
+      { data: '5', label: 'setup', key: 'setup' },
+      { data: '40', label: 'matches', key: 'time' },
+      { data: '5', label: 'downtime', key: 'downtime' },
+    ],
+    tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
+    description:
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
   },
   {
     id: 2,
@@ -33,14 +55,36 @@ const data = [
     foreground: require('../../../assets/temp/list_foreground.png'),
     title: 'Takenoko',
     publisher: 'Galapagos Jogos',
+    information: [
+      { data: '2 - 5', label: 'players', key: 'meeple' },
+      { data: '10', label: 'years old', key: 'age' },
+      { data: '5', label: 'expansions', key: 'meeple' },
+      { data: '5', label: 'setup', key: 'setup' },
+      { data: '40', label: 'matches', key: 'time' },
+      { data: '5', label: 'downtime', key: 'downtime' },
+    ],
+    tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
+    description:
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
   },
   {
     id: 3,
     image: require('../../../assets/temp/ticket.png'),
-    cover: require('../../../assets/temp/list_cover.png'),
-    foreground: require('../../../assets/temp/list_foreground.png'),
+    cover: require('../../../assets/temp/ticket.png'),
+    foreground: require('../../../assets/temp/ticket_foreground.png'),
     title: 'Ticket to Ride',
     publisher: 'Galapagos Jogos',
+    information: [
+      { data: '2 - 5', label: 'players', key: 'meeple' },
+      { data: '10', label: 'years old', key: 'age' },
+      { data: '5', label: 'expansions', key: 'meeple' },
+      { data: '5', label: 'setup', key: 'setup' },
+      { data: '40', label: 'matches', key: 'time' },
+      { data: '5', label: 'downtime', key: 'downtime' },
+    ],
+    tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
+    description:
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
   },
   {
     id: 4,
@@ -49,6 +93,17 @@ const data = [
     foreground: require('../../../assets/temp/list_foreground.png'),
     title: 'Carcassone',
     publisher: 'Galapagos Jogos',
+    information: [
+      { data: '2 - 5', label: 'players', key: 'meeple' },
+      { data: '10', label: 'years old', key: 'age' },
+      { data: '5', label: 'expansions', key: 'meeple' },
+      { data: '5', label: 'setup', key: 'setup' },
+      { data: '40', label: 'matches', key: 'time' },
+      { data: '5', label: 'downtime', key: 'downtime' },
+    ],
+    tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
+    description:
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
   },
 ]
 
@@ -99,6 +154,7 @@ const Home = (): JSX.Element => {
         </Header.TextContent>
         <Button
           color="background"
+          variant="filled"
           icon={view === 'masonry' ? <IconGrid /> : <IconList />}
           onPress={handleOnPressView}
         />
