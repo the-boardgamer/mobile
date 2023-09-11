@@ -1,10 +1,10 @@
-import { Image, ImageProps, Pressable, PressableProps } from 'react-native'
+import { Image, ImageSourcePropType, Pressable, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
-  image: ImageProps
+  image: string
 }
 
 export default function GridItem(props: Props): JSX.Element {
@@ -12,7 +12,7 @@ export default function GridItem(props: Props): JSX.Element {
 
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
-  const img = Image.resolveAssetSource(image)
+  const img = Image.resolveAssetSource(image as ImageSourcePropType)
   const aspectRatio = img.width / img.height
 
   if (!aspectRatio) return
@@ -24,7 +24,7 @@ export default function GridItem(props: Props): JSX.Element {
       {...rest}
     >
       <Styled.Image
-        source={image}
+        source={image as ImageSourcePropType}
         resizeMode="contain"
         style={{ aspectRatio: aspectRatio || 1, transform: [{ scale: animatedScale }] }}
       />

@@ -41,7 +41,11 @@ export default function Button(props: Props): JSX.Element {
   }, [animate, iconOpacityValue])
 
   const getIconColor =
-    variant === 'filled' ? theme.palette[color].inverse : theme.palette[color].default
+    variant === 'filled' && color === 'background'
+      ? theme.palette.foreground.default
+      : variant === 'filled'
+      ? theme.palette[color].inverse
+      : theme.palette[color].default
 
   return (
     <Animated.View
