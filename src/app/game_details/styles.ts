@@ -1,3 +1,4 @@
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { styled } from 'styled-components/native'
 
 import Header from '@components/header'
@@ -57,7 +58,10 @@ export const TagsContainer = styled.ScrollView((props) => ({
   paddingTop: props.theme.size.size3,
 }))
 
-export const HeaderContainer = styled(Header.Root)<{ top: string }>((props) => ({
-  marginTop: props.top,
-  zIndex: 1,
-}))
+export const HeaderContainer = styled(Header.Root)(() => {
+  const insets = useSafeAreaInsets()
+  return {
+    marginTop: `${insets.top}px`,
+    zIndex: 1,
+  }
+})

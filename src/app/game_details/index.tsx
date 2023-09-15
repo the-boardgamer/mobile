@@ -7,7 +7,6 @@ import {
   ScrollView,
   View,
 } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { router, useLocalSearchParams } from 'expo-router'
 
 import * as Styled from './styles'
@@ -28,7 +27,6 @@ import Global from '@styles'
 
 export default function GameDetails(): JSX.Element {
   const [filled, setFilled] = React.useState(false)
-  const insets = useSafeAreaInsets()
 
   const { cover, description, foreground, information, tags } = useLocalSearchParams<{
     cover: string
@@ -63,7 +61,7 @@ export default function GameDetails(): JSX.Element {
           style={{ height: 300 }}
         >
           {/* check later */}
-          <Styled.HeaderContainer top={`${insets.top}px`}>
+          <Styled.HeaderContainer>
             <Button
               color="background"
               icon={<IconArrow />}
