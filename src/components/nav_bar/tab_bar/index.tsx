@@ -8,12 +8,15 @@ import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'
 export interface Props extends BottomTabBarButtonProps {
   label: string
   icon: JSX.Element
+  getWidth: (width: number) => void
 }
 
 const Tab = (props: Props): JSX.Element => {
-  const { label, icon, accessibilityState, onPress } = props
-  const { theme } = useTheme()
+  const { label, icon, accessibilityState, getWidth, ...rest } = props
+  delete rest.style
+  delete rest.onLayout
 
+  const { theme } = useTheme()
   const offsetValue = React.useRef(new Animated.Value(100)).current
   const selected: boolean = accessibilityState.selected
 
@@ -23,25 +26,37 @@ const Tab = (props: Props): JSX.Element => {
         toValue: 0,
         useNativeDriver: true,
       }).start()
-    else
-      Animated.spring(offsetValue, {
-        toValue: 100,
-        useNativeDriver: true,
-      }).start()
   }, [selected, offsetValue])
 
+  const layout = React.useCallback(
+    (e): void => {
+      getWidth(e?.nativeEvent?.layout.width)
+    },
+    [getWidth],
+  )
+
   return (
-    <Styled.Container onPress={onPress}>
-      <Styled.IconContainer>
+    <Styled.Container>
+      <Styled.Tab
+        onLayout={layout}
+        {...rest}
+      >
+        {!selected &&
+          React.cloneElement(icon, {
+            width: 20,
+            height: 20,
+            color: selected ? theme.palette.primary.inverse : theme.palette.primary.default,
+            filled: selected,
+            style: { position: 'absolute' },
+          })}
+
         {React.cloneElement(icon, {
-          width: 24,
-          height: 24,
-          color: selected ? theme.palette.primary.inverse : theme.palette.primary.default,
+          width: 20,
+          height: 20,
+          color: selected ? theme.palette.primary.inverse : 'transparent',
           filled: selected,
         })}
-      </Styled.IconContainer>
 
-      {selected && (
         <Styled.Label
           numberOfLines={1}
           selected={selected}
@@ -49,9 +64,11 @@ const Tab = (props: Props): JSX.Element => {
         >
           {label}
         </Styled.Label>
-      )}
+      </Styled.Tab>
     </Styled.Container>
   )
 }
+
+Tab.displayName = 'Tab'
 
 export default Tab

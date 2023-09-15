@@ -36,7 +36,7 @@ export const CoverImage = styled.Image((props) => ({
   borderTopLeftRadius: props.theme.radius.radius5,
   borderBottomLeftRadius: props.theme.radius.radius5,
   width: '180px',
-  height: '120px',
+  height: '105px',
 }))
 
 export const EndContainer = styled.View((props) => ({

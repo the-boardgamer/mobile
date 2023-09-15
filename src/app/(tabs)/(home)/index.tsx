@@ -3,9 +3,10 @@ import { Animated, Easing } from 'react-native'
 
 import Button from '@components/button'
 import Header from '@components/header'
-import { IconGrid, IconList } from '@components/icon'
+import { IconCompass, IconGrid, IconList, IconShelf } from '@components/icon'
 import ListView from '@components/list_view'
 import MasonryView from '@components/masonry_view'
+import NavSelector from '@components/nav_selector'
 import Global from '@styles'
 
 const data = [
@@ -60,7 +61,7 @@ const Home = (): JSX.Element => {
   const firstRenderAnimation = React.useCallback(() => {
     Animated.timing(transformValue, {
       toValue: 1,
-      duration: 800,
+      duration: 200,
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
@@ -85,6 +86,7 @@ const Home = (): JSX.Element => {
       easing: Easing.ease,
       useNativeDriver: false,
     }).start()
+
     setView((prev) => (prev === 'masonry' ? 'list' : 'masonry'))
   }
 
@@ -117,6 +119,12 @@ const Home = (): JSX.Element => {
       >
         {view === 'masonry' ? <MasonryView data={data} /> : <ListView data={data} />}
       </Animated.View>
+      <NavSelector
+        leading={{ label: 'shelf', icon: <IconShelf /> }}
+        trailing={{ label: 'discover', icon: <IconCompass /> }}
+        onPress={(): void => undefined}
+        defaultSelected="discover"
+      />
     </Global.Screen>
   )
 }

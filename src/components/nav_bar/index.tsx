@@ -1,95 +1,86 @@
 import React from 'react'
-import { Animated, Dimensions } from 'react-native'
+import { Animated, Dimensions, Platform } from 'react-native'
 import { Tabs } from 'expo-router'
 
 import * as Styled from './styles'
-import Tab from '@components/nav_bar/tab'
+import Tab from './tab_bar'
 import { useTheme } from '@contexts'
 
 interface Props {
   tabs: {
-    label: string
-    icon: JSX.Element
-  }[]
-  padding?: number
-  iconSize?: number
-  letterSize?: number
-  tabPadding?: number
-}
-
-const defaultValues = {
-  padding: 28,
-  iconSize: 24,
-  letterSize: 10,
-  tabPadding: 20,
+    [key: string]: { label: string; icon: JSX.Element }
+  }
 }
 
 const NavBar = (props: Props): JSX.Element => {
+  const { tabs } = props
   const { theme } = useTheme()
-  const { padding, tabs, letterSize, iconSize, tabPadding } = { ...defaultValues, ...props }
 
-  const getWidth = (Dimensions.get('window').width - 2 * padding) / tabs.length
+  const screenWidth = Dimensions.get('window').width - parseInt(theme.size.size7, 10) * 2
 
-  const initialSize = tabPadding * 2 + iconSize + tabs[0].label.length * letterSize
-  const sizeOffsetValue = React.useRef(new Animated.Value(1)).current
-  const tabOffsetValue = React.useRef(new Animated.Value(padding)).current
+  const [selectorWidth, setSelectorWidth] = React.useState({})
+  const [selected, setSelected] = React.useState(Object.keys(tabs)[0])
+
+  const labelOffsetValue = React.useRef(new Animated.Value(parseInt(theme.size.size7, 10))).current
 
   const screenOptions = {
     tabBarHideOnKeyboard: true,
     headerShown: false,
 
     tabBarStyle: {
+      elevation: 0,
       paddingHorizontal: parseInt(theme.size.size7, 10),
-      paddingVertical: parseInt(theme.size.size7, 10),
+      paddingBottom: parseInt(Platform.OS === 'android' ? '0px' : theme.size.size2, 10),
       borderTopWidth: 0,
       backgroundColor: 'transparent',
-      height: parseInt(theme.size.size26, 10),
+      height: parseInt(Platform.OS === 'android' ? theme.size.size16 : theme.size.size20, 10),
+      zIndex: 2,
     },
   }
 
+  const springAnimation = (index): void => {
+    Animated.spring(labelOffsetValue, {
+      toValue: parseInt(theme.size.size7, 10) + index * (screenWidth / Object.keys(tabs).length),
+      useNativeDriver: true,
+    }).start()
+  }
+
+  const tabBarButton = (tabProps, label, icon): JSX.Element => (
+    <Tab
+      getWidth={(e): void => setSelectorWidth({ ...selectorWidth, [label]: e })}
+      label={label}
+      icon={icon}
+      {...tabProps}
+    />
+  )
+
+  const renderTabs = (): JSX.Element[] =>
+    Object.values(tabs).map((tab, index) => (
+      <Tabs.Screen
+        key={tab.label}
+        name={`(${tab.label})/index`}
+        options={{
+          tabBarButton: (e) => tabBarButton(e, tab.label, tab.icon),
+        }}
+        listeners={{
+          tabPress: (): void => {
+            setSelected(tab.label)
+            springAnimation(index)
+          },
+        }}
+      />
+    ))
+
   return (
     <Styled.Container>
-      <Tabs screenOptions={screenOptions}>
-        {tabs.map((tab, index) => {
-          const middle = padding + getWidth * index
-          const size =
-            1 +
-            (tabPadding * 2 + iconSize + tab.label.length * letterSize - initialSize) / initialSize
-
-          const tabPress = (): void => {
-            Animated.spring(sizeOffsetValue, {
-              toValue: size,
-              useNativeDriver: true,
-            }).start()
-            Animated.spring(tabOffsetValue, {
-              toValue: middle,
-              useNativeDriver: true,
-            }).start()
-          }
-
-          const tabBarButton = (tabProps): JSX.Element => (
-            <Tab
-              label={tab.label}
-              icon={tab.icon}
-              {...tabProps}
-            />
-          )
-
-          return (
-            <Tabs.Screen
-              key={tab.label}
-              name={`(${tab.label})/index`}
-              options={{ tabBarButton }}
-              listeners={{ tabPress }}
-            />
-          )
-        })}
-      </Tabs>
-
-      <Styled.Selector style={{ width: getWidth, transform: [{ translateX: tabOffsetValue }] }}>
-        <Styled.Background
-          style={{ width: initialSize, transform: [{ scaleX: sizeOffsetValue }] }}
-        />
+      <Tabs screenOptions={screenOptions}>{renderTabs()}</Tabs>
+      <Styled.Selector
+        style={{
+          width: screenWidth / Object.keys(tabs).length,
+          transform: [{ translateX: labelOffsetValue }],
+        }}
+      >
+        <Styled.Background style={{ width: selectorWidth[`${selected}`] }} />
       </Styled.Selector>
     </Styled.Container>
   )
