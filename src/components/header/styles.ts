@@ -6,7 +6,6 @@ export const Container = styled.View((props) => ({
   justifyContent: 'space-between',
   gap: props.theme.size.size3,
   marginHorizontal: props.theme.size.size5,
-  // marginBottom: props.theme.size.size6,
 }))
 
 export const TextContent = styled.View((props) => ({
