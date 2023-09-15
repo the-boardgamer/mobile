@@ -7,7 +7,7 @@ import { ThemeContext, type ThemeContextType } from './context'
 import { ThemeType } from './types'
 
 export const ThemeProvider = (props: { children: React.ReactNode }): JSX.Element => {
-  const [mode, setMode] = useState<ModeType>('light')
+  const [mode, setMode] = useState<ModeType>('dark')
 
   const theme: ThemeType = {
     // change this later to be easier to change modes

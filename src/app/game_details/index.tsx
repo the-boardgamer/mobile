@@ -9,6 +9,7 @@ import {
 import { router, useLocalSearchParams } from 'expo-router'
 
 import * as Styled from './styles'
+import Accordion from '@components/accordion'
 import Button from '@components/button'
 import {
   IconAge,
@@ -113,10 +114,10 @@ export default function GameDetails(): JSX.Element {
           )}
 
           {description && (
-            <Styled.DescriptionContainer>
-              <Styled.DescriptionTitle>Description</Styled.DescriptionTitle>
-              <Styled.DescriptionContent>{description}</Styled.DescriptionContent>
-            </Styled.DescriptionContainer>
+            <Accordion
+              label="Description"
+              content={description}
+            />
           )}
         </View>
       </ScrollView>

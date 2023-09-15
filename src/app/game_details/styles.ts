@@ -29,23 +29,6 @@ export const IconInformationList = styled.FlatList((props) => ({
   margin: props.theme.size.size5,
 }))
 
-export const DescriptionContainer = styled.View((props) => ({
-  margin: props.theme.size.size5,
-}))
-
-export const DescriptionTitle = styled.Text((props) => ({
-  color: props.theme.palette.foreground.default,
-  fontSize: props.theme.typography.fontSize.size5,
-  fontWeight: 'bold',
-}))
-
-export const DescriptionContent = styled.Text((props) => ({
-  color: props.theme.palette.foreground.default,
-  fontSize: props.theme.typography.fontSize.size4,
-  letterSpacing: '2px',
-  marginTop: props.theme.size.size3,
-}))
-
 export const CoverImage = styled.Image(() => ({
   height: '100%',
   maxWidth: '80%',

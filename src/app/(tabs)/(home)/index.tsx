@@ -27,7 +27,7 @@ const data = [
     ],
     tags: ['Dificil', 'Estrategia', 'Civilizacao', 'Familia', 'Divertido', 'Demorado'],
     description:
-      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins.',
+      'In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how theyve placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the players score. The player with the most points at the end of the game wins. th the most points at the end of the game wins. th the most points at the end of the game wins.th the most points at the end of the game wins.th the most points at the end of the game wins.th the most points at the end of the game wins.',
   },
   {
     id: 1,
