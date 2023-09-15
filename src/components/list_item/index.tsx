@@ -1,12 +1,12 @@
-import { Animated, Image, ImageProps, PressableProps } from 'react-native'
+import { Animated, Image, ImageSourcePropType, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import { useTheme } from '@contexts'
 import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
-  coverImage: ImageProps
-  foregroundImage: ImageProps
+  coverImage: string
+  foregroundImage: string
   icon?: JSX.Element
   publisher: string
   title: string
@@ -27,12 +27,12 @@ export default function ListItem(props: Props): JSX.Element {
       >
         <Styled.StartContainer>
           <Styled.CoverImage
-            source={coverImage}
+            source={coverImage as ImageSourcePropType}
             resizeMode="cover"
             blurRadius={4}
           />
           <Styled.ForegroundImage>
-            <Image source={foregroundImage} />
+            <Image source={foregroundImage as ImageSourcePropType} />
           </Styled.ForegroundImage>
         </Styled.StartContainer>
         <Styled.EndContainer>

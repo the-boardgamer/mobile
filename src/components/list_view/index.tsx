@@ -1,19 +1,28 @@
-import { FlatList, ImageProps, RefreshControl, View, ViewProps } from 'react-native'
+import { FlatList, RefreshControl, View, ViewProps } from 'react-native'
+import { router } from 'expo-router'
 
 import ListItem from '@components/list_item'
 
-type ItemType = {
-  cover: ImageProps
-  foreground: ImageProps
+export type InformationType = {
+  data: string
+  label: string
+  key: string
+}
+
+export type ItemType = {
+  cover: string
+  description: string
+  foreground: string
   id: number
-  image: ImageProps
-  title: string
+  image: string
+  information: InformationType[]
   publisher: string
+  tags: string[]
+  title: string
 }
 
 export interface Props extends ViewProps {
   data: Array<ItemType>
-  // renderItem: (info: { item: ItemType }) => JSX.Element
 }
 
 const ListView = (props: Props): JSX.Element => {
@@ -37,6 +46,18 @@ const ListView = (props: Props): JSX.Element => {
             foregroundImage={item.foreground}
             publisher={item.publisher}
             title={item.title}
+            onPress={(): void =>
+              router.push({
+                pathname: `/game_details/`,
+                params: {
+                  cover: item.cover,
+                  description: item.description,
+                  foreground: item.foreground,
+                  information: JSON.stringify(item.information),
+                  tags: JSON.stringify(item.tags),
+                },
+              })
+            }
           />
         )}
         {...rest}

@@ -21,13 +21,18 @@ export default function Icon(props: Props): JSX.Element {
   return React.cloneElement(icon, { ...rest })
 }
 
+export { default as IconAge } from './age'
 export { default as IconArrow } from './arrow'
 export { default as IconCalendar } from './calendar'
+export { default as IconCompass } from './compass'
+export { default as IconDowntime } from './downtime'
 export { default as IconGrid } from './grid'
 export { default as IconHome } from './home'
 export { default as IconList } from './list'
+export { default as IconMeeple } from './meeple'
 export { default as IconPerson } from './person'
 export { default as IconSearch } from './search'
-export { default as IconStar } from './star'
-export { default as IconCompass } from './compass'
+export { default as IconSetup } from './setup'
 export { default as IconShelf } from './shelf'
+export { default as IconStar } from './star'
+export { default as IconTime } from './time'
