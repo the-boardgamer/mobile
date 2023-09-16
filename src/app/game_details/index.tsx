@@ -114,10 +114,18 @@ export default function GameDetails(): JSX.Element {
           )}
 
           {description && (
-            <Accordion
-              label="Description"
-              content={description}
-            />
+            <View>
+              <Accordion
+                data={[
+                  { label: 'Description', content: description },
+                  {
+                    label: 'Test 2',
+                    content: description,
+                  },
+                  { label: 'Test', content: description },
+                ]}
+              />
+            </View>
           )}
         </View>
       </ScrollView>
