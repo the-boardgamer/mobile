@@ -5,51 +5,28 @@ import { defaultValues, Props } from '../types'
 function IconDowntime(props: Props): JSX.Element {
   const { filled, color, ...rest } = { ...defaultValues, ...props }
 
-  const filledSvg = (
-    <Svg
-      fill="none"
-      {...rest}
-    >
-      <Path
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M16.269 17.98a5.742 5.742 0 0 1-2.862 2.103 5.793 5.793 0 0 1-3.56.026 5.744 5.744 0 0 1-2.894-2.06 5.665 5.665 0 0 1-1.113-3.354V9.948M7.067 5.596A5.742 5.742 0 0 1 9.93 3.494a5.793 5.793 0 0 1 3.56-.027 5.745 5.745 0 0 1 2.894 2.06 5.665 5.665 0 0 1 1.113 3.354v4.748"
-      />
-      <Path
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="m4 11.788 1.84-1.84 1.84 1.84M19.336 11.788l-1.84 1.84-1.84-1.84"
-      />
-    </Svg>
-  )
-
   const linedSvg = (
     <Svg
       fill="none"
       {...rest}
     >
       <Path
+        d="M5 15L7 13L9 15"
         stroke={color}
+        strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M16.269 17.98a5.742 5.742 0 0 1-2.862 2.103 5.793 5.793 0 0 1-3.56.026 5.744 5.744 0 0 1-2.894-2.06 5.665 5.665 0 0 1-1.113-3.354V9.948M7.067 5.596A5.742 5.742 0 0 1 9.93 3.494a5.793 5.793 0 0 1 3.56-.027 5.745 5.745 0 0 1 2.894 2.06 5.665 5.665 0 0 1 1.113 3.354v4.748"
       />
       <Path
+        d="M7 13.6C7 14.4487 7.14197 15.2589 7.39979 16C8.2157 18.3455 10.1918 20 12.5 20C15.5376 20 18 18.1346 18 14.6V9.4C18 5.86538 15.5376 4 12.5 4C10.1918 4 8.2157 5.65454 7.39979 8"
         stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
         strokeWidth={2}
-        d="m4 11.788 1.84-1.84 1.84 1.84M19.336 11.788l-1.84 1.84-1.84-1.84"
+        strokeLinecap="round"
       />
     </Svg>
   )
 
-  return filled ? filledSvg : linedSvg
+  return filled ? linedSvg : linedSvg
 }
 
 export default IconDowntime
