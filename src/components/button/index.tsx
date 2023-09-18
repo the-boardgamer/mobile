@@ -7,21 +7,23 @@ import { useTheme } from '@contexts'
 import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
+  action?: boolean
+  animation?: boolean
   color?: 'primary' | 'secondary' | 'background'
   icon?: JSX.Element
   label?: string
   variant?: 'filled' | 'shade' | 'outlined' | 'ghost'
-  animation?: boolean
 }
 
 const defaultValues: Props = {
+  action: false,
+  animation: true,
   color: 'primary',
   variant: 'filled',
-  animation: true,
 }
 
 export default function Button(props: Props): JSX.Element {
-  const { color, label, icon, variant, animation, ...rest } = { ...defaultValues, ...props }
+  const { action, color, label, icon, variant, animation, ...rest } = { ...defaultValues, ...props }
   const { theme } = useTheme()
 
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
@@ -51,6 +53,7 @@ export default function Button(props: Props): JSX.Element {
     <Animated.View
       style={{
         transform: [{ scale: animatedScale }],
+        alignSelf: 'flex-start',
       }}
     >
       <Styled.Button
@@ -58,6 +61,7 @@ export default function Button(props: Props): JSX.Element {
         variant={variant}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
+        action={action}
         {...rest}
       >
         {icon && (
@@ -78,6 +82,7 @@ export default function Button(props: Props): JSX.Element {
           <Styled.Label
             color={color}
             variant={variant}
+            action={action}
           >
             {label}
           </Styled.Label>

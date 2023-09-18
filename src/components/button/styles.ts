@@ -4,6 +4,7 @@ import { Props } from '.'
 import { ThemeType } from '@contexts'
 
 interface StyledProps {
+  action: boolean
   color: Props['color']
   theme: ThemeType
   variant: Props['variant']
@@ -27,8 +28,8 @@ const getColor = (props: StyledProps): string => {
 
 export const Button = styled.Pressable<StyledProps>((props) => ({
   backgroundColor: getBackground(props),
-  padding: props.theme.size.size5,
-  borderRadius: props.theme.radius.radius5,
+  padding: props.action ? props.theme.size.size2 : props.theme.size.size5,
+  borderRadius: props.action ? props.theme.size.size3 : props.theme.size.size5,
   alignItems: 'center',
   justifyContent: 'center',
   boxSizing: 'border-box',
