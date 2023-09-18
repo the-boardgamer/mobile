@@ -8,18 +8,10 @@ import {
 } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 
+import GameInfoModal from './game_info_modal'
 import * as Styled from './styles'
 import Button from '@components/button'
-import {
-  IconAge,
-  IconArrow,
-  IconDowntime,
-  IconMeeple,
-  IconSetup,
-  IconStar,
-  IconTime,
-} from '@components/icon'
-import IconInformation from '@components/icon_information'
+import { IconArrow, IconStar } from '@components/icon'
 import { InformationType } from '@components/list_view'
 import Tag from '@components/tag'
 import Global from '@styles'
@@ -34,21 +26,6 @@ export default function GameDetails(): JSX.Element {
     information: string
     tags: string
   }>()
-
-  function renderIcon(key: string): JSX.Element {
-    switch (key) {
-      case 'age':
-        return <IconAge />
-      case 'time':
-        return <IconTime />
-      case 'downtime':
-        return <IconDowntime />
-      case 'setup':
-        return <IconSetup />
-      default:
-        return <IconMeeple />
-    }
-  }
 
   return (
     <Global.Screen edges={['left', 'right']}>
@@ -96,22 +73,20 @@ export default function GameDetails(): JSX.Element {
 
           {JSON.parse(information) && (
             <Styled.IconInformationList
+              numColumns={5}
+              ItemSeparatorComponent={Global.Separator}
               data={JSON.parse(information)}
-              numColumns={2}
               scrollEnabled={false}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
               renderItem={({ item }: ListRenderItemInfo<InformationType>): JSX.Element => (
-                <IconInformation
+                <GameInfoModal
                   label={item.label}
                   data={item.data}
-                  icon={renderIcon(item.key)}
-                  onPress={(): void => undefined}
-                  // change later when margins on component
-                  style={{ marginBottom: 10, marginRight: 6 }}
+                  id={item.key}
                 />
               )}
             />
           )}
-
           {description && (
             <Styled.DescriptionContainer>
               <Styled.DescriptionTitle>Description</Styled.DescriptionTitle>
