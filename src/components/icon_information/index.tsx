@@ -1,6 +1,7 @@
 import { TouchableOpacityProps } from 'react-native'
 
 import * as Styled from './styles'
+import Icon from '@components/icon'
 import { useTheme } from '@contexts'
 
 export interface Props extends TouchableOpacityProps {
@@ -21,7 +22,7 @@ export default function IconInformation(props: Props): JSX.Element {
       activeOpacity={!onPress && 1}
     >
       <Styled.IconContainer>
-        <Styled.Icon
+        <Icon
           icon={icon}
           width={theme.size.size9}
           height={theme.size.size9}
@@ -29,8 +30,10 @@ export default function IconInformation(props: Props): JSX.Element {
         />
       </Styled.IconContainer>
       <Styled.TextContent>
-        <Styled.Data numberOfLines={1}>{data}</Styled.Data>
-        <Styled.Label numberOfLines={1}>{label}</Styled.Label>
+        <Styled.Data numberOfLines={1}>
+          {data}
+          <Styled.Label>{label}</Styled.Label>
+        </Styled.Data>
       </Styled.TextContent>
     </Styled.Container>
   )
