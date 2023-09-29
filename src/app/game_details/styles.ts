@@ -48,3 +48,13 @@ export const HeaderContainer = styled(Header.Root)(() => {
     zIndex: 1,
   }
 })
+
+export const GameInfoModalText = styled.Text((props) => ({
+  color: props.theme.palette.foreground.default,
+  fontFamily: props.theme.typography.family.primary.medium,
+}))
+
+export const GameInfoModalTextHighlight = styled.Text((props) => ({
+  color: props.theme.palette.primary.default,
+  fontFamily: props.theme.typography.family.primary.bold,
+}))
