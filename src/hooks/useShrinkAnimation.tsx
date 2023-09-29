@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 
 export function useShrinkAnimation(
   initialScale = 1,
-  toValue = 0.98,
+  toValue = 0.95,
   speed = 10,
 ): {
   animatedScale: Animated.Value

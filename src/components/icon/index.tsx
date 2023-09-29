@@ -2,9 +2,11 @@ import React from 'react'
 import { Svg } from 'react-native-svg'
 
 export interface Props extends Partial<Svg> {
-  filled?: boolean
   color?: string
+  filled?: boolean
+  height?: number
   icon: JSX.Element
+  width?: number
 }
 
 export const defaultValues: Props = {

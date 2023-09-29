@@ -10,6 +10,7 @@ import { router, useLocalSearchParams } from 'expo-router'
 
 import GameInfoModal from './game_info_modal'
 import * as Styled from './styles'
+import Accordion from '@components/accordion'
 import Button from '@components/button'
 import { IconArrow, IconStar } from '@components/icon'
 import { InformationType } from '@components/list_view'
@@ -88,10 +89,18 @@ export default function GameDetails(): JSX.Element {
             />
           )}
           {description && (
-            <Styled.DescriptionContainer>
-              <Styled.DescriptionTitle>Description</Styled.DescriptionTitle>
-              <Styled.DescriptionContent>{description}</Styled.DescriptionContent>
-            </Styled.DescriptionContainer>
+            <View>
+              <Accordion
+                data={[
+                  { label: 'Description', content: description },
+                  {
+                    label: 'Test 2',
+                    content: description,
+                  },
+                  { label: 'Test', content: description },
+                ]}
+              />
+            </View>
           )}
         </View>
       </ScrollView>
