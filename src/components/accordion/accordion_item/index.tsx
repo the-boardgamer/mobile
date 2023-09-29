@@ -8,8 +8,8 @@ import { IconArrow } from '@components/icon'
 import { useTheme } from '@contexts'
 
 export interface AccordionItemProps extends ViewProps {
-  content?: string
-  label?: string
+  content: string
+  label: string
 }
 
 if (Platform.OS === 'android') {

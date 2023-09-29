@@ -1,17 +1,17 @@
+import React from 'react'
 import { ViewProps } from 'react-native'
 
 import AccordionItem, { AccordionItemProps } from './accordion_item'
-import * as Styled from './styles'
 
 export interface Props extends ViewProps {
-  data?: AccordionItemProps[]
+  data: AccordionItemProps[]
 }
 
 export default function Accordion(props: Props): JSX.Element {
   const { data, ...rest } = { ...props }
 
   return (
-    <Styled.AccordionContainer {...rest}>
+    <React.Fragment {...rest}>
       {data.map((item, i) => (
         <AccordionItem
           key={`${item.label}-${i}`}
@@ -19,6 +19,6 @@ export default function Accordion(props: Props): JSX.Element {
           label={item.label}
         />
       ))}
-    </Styled.AccordionContainer>
+    </React.Fragment>
   )
 }
