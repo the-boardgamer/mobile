@@ -26,8 +26,8 @@ export default function Input(props: Props): JSX.Element {
             onPressOut={handlePressOut}
           >
             <Icon
-              width={18}
-              height={18}
+              width={theme.size.size5}
+              height={theme.size.size5}
               icon={icon}
               color={theme.palette.foreground.variant}
             />
@@ -38,8 +38,8 @@ export default function Input(props: Props): JSX.Element {
       return (
         <Styled.IconContainer>
           <Icon
-            width={18}
-            height={18}
+            width={theme.size.size5}
+            height={theme.size.size5}
             icon={icon}
             color={theme.palette.foreground.variant}
           />

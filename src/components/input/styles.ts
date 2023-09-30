@@ -1,36 +1,33 @@
 import { styled } from 'styled-components/native'
 
 export const Container = styled.View((props) => ({
-  gap: '8px',
+  gap: props.theme.size.size2,
 
   alignItems: 'center',
   flexDirection: 'row',
   backgroundColor: props.theme.palette.background.variant,
-  borderRadius: '12px',
-
-  marginBottom: '20px',
-  marginHorizontal: '20px',
+  borderRadius: props.theme.radius.radius4,
 }))
 
 export const TextInput = styled.TextInput((props) => ({
-  paddingHorizontal: '16px',
+  paddingHorizontal: props.theme.size.size4,
   fontFamily: props.theme.typography.family.primary.medium,
-  fontSize: '14px',
-  height: '44px',
+  fontSize: props.theme.typography.fontSize.size4,
+  height: props.theme.size.size11,
   flex: 1,
   color: props.theme.palette.foreground.default,
 }))
 
-export const IconContainer = styled.View(() => ({
+export const IconContainer = styled.View((props) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  height: '44px',
-  width: '44px',
+  height: props.theme.size.size11,
+  width: props.theme.size.size11,
 }))
 
-export const ActionButtonContainer = styled.Pressable(() => ({
+export const ActionButtonContainer = styled.Pressable((props) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  height: '44px',
-  width: '44px',
+  height: props.theme.size.size11,
+  width: props.theme.size.size11,
 }))
