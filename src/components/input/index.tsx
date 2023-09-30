@@ -50,6 +50,7 @@ export default function Input(props: Props): JSX.Element {
   return (
     <Styled.Container>
       <Styled.TextInput
+        hasIcon={!!icon}
         selectionColor={theme.palette.foreground.variant}
         cursorColor={theme.palette.foreground.variant}
         placeholderTextColor={theme.palette.foreground.shade30}
