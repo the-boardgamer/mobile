@@ -1,58 +1,36 @@
-import React from 'react'
-import { PressableProps, TextInputProps } from 'react-native'
-import { DefaultTheme, styled } from 'styled-components/native'
+import { styled } from 'styled-components/native'
 
-import { Props } from './collapsible'
-import { ThemeType } from '@contexts/theme/types'
-
-interface StylesContainerProps extends TextInputProps {
-  theme: ThemeType
-  showInput: boolean
-  outlined: Exclude<Props['outlined'], undefined>
-}
-
-interface StylesInputProps extends TextInputProps {
-  theme: ThemeType
-}
-interface StylesPressableProps extends PressableProps {
-  theme: ThemeType
-  showInput: boolean
-}
-
-export const Input = styled.TextInput<StylesInputProps>((props) => ({
-  color: props.theme.palette.foreground.variant,
-  flex: 1,
+export const Container = styled.View((props) => ({
+  alignItems: 'center',
   flexDirection: 'row',
-  paddingHorizontal: props.theme.size.size4,
-  paddingVertical: '23.5px',
-}))
-
-export const Container = styled.View<StylesContainerProps>((props) => ({
-  alignSelf: 'flex-end',
   backgroundColor: props.theme.palette.background.variant,
-  borderColor: props.theme.palette.foreground.shade30,
-  borderRadius: props.theme.radius.radius5,
-  borderWidth: props.outlined ? '1px' : '0px',
-  flexDirection: props.showInput ? 'row' : 'column',
+  borderRadius: props.theme.radius.radius4,
+}))
+
+interface TextInputProps {
+  hasIcon: boolean
+}
+
+export const TextInput = styled.TextInput<TextInputProps>((props) => ({
+  paddingLeft: props.theme.size.size4,
+  paddingRight: props.hasIcon ? 0 : props.theme.size.size4,
+  fontFamily: props.theme.typography.family.primary.medium,
   fontSize: props.theme.typography.fontSize.size4,
-  justifyContent: 'space-between',
-  margin: props.theme.size.size5,
-  paddingHorizontal: props.theme.size.size5,
-  paddingVertical: !props.showInput ? props.theme.size.size5 : '0px',
+  height: props.theme.size.size11,
+  flex: 1,
+  color: props.theme.palette.foreground.default,
 }))
 
-export const IconContainer = styled.Pressable<StylesPressableProps>((props) => ({
-  alignSelf: !props.showInput ? 'flex-end' : 'center',
+export const IconContainer = styled.View((props) => ({
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: props.theme.size.size11,
+  width: props.theme.size.size11,
 }))
 
-export const Icon = ({
-  icon,
-  theme,
-}: {
-  icon: Exclude<Props['icon'], undefined>
-  theme: DefaultTheme
-}): JSX.Element =>
-  React.cloneElement(icon, {
-    color: theme.palette.foreground.variant,
-    backgroundColor: theme.palette.background.variant,
-  })
+export const ActionButtonContainer = styled.Pressable((props) => ({
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: props.theme.size.size11,
+  width: props.theme.size.size11,
+}))
