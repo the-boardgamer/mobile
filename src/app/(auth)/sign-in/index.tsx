@@ -1,6 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import * as Device from 'expo-device'
 import { useTranslation } from 'react-i18next'
 
 import * as Styled from './styles'
@@ -61,15 +62,17 @@ export default function SignIn(): JSX.Element {
               expanded
               icon={<IconFacebook />}
             />
-            <SocialButton
-              animation={false}
-              label={t('login.apple')}
-              foreground="white"
-              background="black"
-              // onPress={(): void => signIn()}
-              icon={<IconApple />}
-              expanded
-            />
+            {Device.osName === 'iOS' && (
+              <SocialButton
+                animation={false}
+                label={t('login.apple')}
+                foreground="white"
+                background="black"
+                // onPress={(): void => signIn()}
+                icon={<IconApple />}
+                expanded
+              />
+            )}
           </Styled.Content>
           <View>
             <Button
