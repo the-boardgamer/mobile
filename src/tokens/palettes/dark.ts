@@ -39,6 +39,7 @@ const background: BackgroundType = {
 const foreground: ForegroundType = {
   default: '#FDF7E5',
   variant: '#E4DFCF',
+  inverse: '#31213B',
   shade30: 'rgba(253, 247, 229, 0.3)',
 }
 

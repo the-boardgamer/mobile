@@ -38,8 +38,9 @@ const background: BackgroundType = {
 
 const foreground: ForegroundType = {
   default: '#31213B',
-  variant: '#271A2F',
+  inverse: '#FDF7E5',
   shade30: 'rgba(44, 30, 53, 0.3)',
+  variant: '#271A2F',
 }
 
 const light: PaletteType = {

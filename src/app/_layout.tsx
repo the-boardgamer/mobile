@@ -1,3 +1,4 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 
@@ -14,13 +15,15 @@ const RootLayout = (): JSX.Element | null => {
 
   if (loadedFonts) {
     return (
-      <ThemeProvider>
-        <AuthProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-          </Stack>
-        </AuthProvider>
-      </ThemeProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ThemeProvider>
+          <AuthProvider>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+            </Stack>
+          </AuthProvider>
+        </ThemeProvider>
+      </GestureHandlerRootView>
     )
   }
 }

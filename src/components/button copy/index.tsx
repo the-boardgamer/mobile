@@ -3,33 +3,31 @@ import { Animated, Easing, PressableProps } from 'react-native'
 
 import * as Styled from './styles'
 import Icon from '@components/icon'
-import { useTheme } from '@contexts'
 import { useShrinkAnimation } from '@hooks/useShrinkAnimation'
 
 export interface Props extends PressableProps {
   action?: boolean
   animation?: boolean
-  color?: 'primary' | 'secondary' | 'background' | 'foreground'
+  background: string
+  foreground: string
   expanded?: boolean
   icon?: JSX.Element
   label?: string
-  variant?: 'filled' | 'shade' | 'outlined' | 'ghost'
 }
 
 const defaultValues: Props = {
   action: false,
   animation: true,
-  color: 'primary',
+  background: undefined,
+  foreground: undefined,
   expanded: false,
-  variant: 'filled',
 }
 
-export default function Button(props: Props): JSX.Element {
-  const { action, color, expanded, label, icon, variant, animation, ...rest } = {
+export default function SocialButton(props: Props): JSX.Element {
+  const { action, background, foreground, expanded, label, icon, animation, ...rest } = {
     ...defaultValues,
     ...props,
   }
-  const { theme } = useTheme()
 
   const { animatedScale, handlePressIn, handlePressOut } = useShrinkAnimation()
 
@@ -47,13 +45,6 @@ export default function Button(props: Props): JSX.Element {
     }).start()
   }, [animate, iconOpacityValue])
 
-  const getIconColor =
-    variant === 'filled' && color === 'background'
-      ? theme.palette.foreground.default
-      : variant === 'filled'
-      ? theme.palette[color].inverse
-      : theme.palette[color].default
-
   return (
     <Animated.View
       style={{
@@ -61,8 +52,8 @@ export default function Button(props: Props): JSX.Element {
       }}
     >
       <Styled.Button
-        color={color}
-        variant={variant}
+        background={background}
+        foreground={foreground}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         action={action}
@@ -77,7 +68,7 @@ export default function Button(props: Props): JSX.Element {
           >
             <Icon
               icon={icon}
-              color={getIconColor}
+              color={foreground}
               {...icon.props}
             />
           </Animated.View>
@@ -85,8 +76,8 @@ export default function Button(props: Props): JSX.Element {
 
         {label && (
           <Styled.Label
-            color={color}
-            variant={variant}
+            background={background}
+            foreground={foreground}
             action={action}
             expanded={expanded}
             numberOfLines={1}

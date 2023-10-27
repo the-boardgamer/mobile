@@ -1,66 +1,117 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import { View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useTranslation } from 'react-i18next'
 
-import { IconStar } from '@components/icon'
-import IconInformation from '@components/icon_information'
-import { useTheme } from '@contexts'
-import { useAuth } from '@contexts'
-import changeLanguage from '@locales/changeLanguage'
+import * as Styled from './styles'
+import Button from '@components/button'
+import SocialButton from '@components/button copy'
+import { IconApple, IconFacebook, IconGoogle, IconMeeple } from '@components/icon'
+import { useAuth, useTheme } from '@contexts'
+import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import Global from '@styles'
 
 export default function SignIn(): JSX.Element {
   const { signIn } = useAuth()
   const { t } = useTranslation()
   const { theme } = useTheme()
+  const insets = useSafeAreaInsets()
+
+  const bottomSheetModalRef = React.useRef<BottomSheetModal>(null)
+
+  const handleOpen = React.useCallback(() => {
+    bottomSheetModalRef.current?.present()
+  }, [])
+
+  const handleClose = React.useCallback(() => {
+    bottomSheetModalRef.current?.close()
+  }, [])
 
   return (
-    <View style={{ paddingTop: 200, backgroundColor: theme.palette.background.default, flex: 1 }}>
-      <Text>{t('welcome')}</Text>
-      <StatusBar style="auto" />
-      <Text>{t('description')}</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={(): void => changeLanguage('en')}
-      >
-        <Text>EN</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={(): void => changeLanguage('pt')}
-      >
-        <Text>PT</Text>
-      </TouchableOpacity>
-
-      <Text onPress={(): void => signIn()}>Sign In</Text>
-
-      <View style={{ flexDirection: 'row', padding: 20, gap: 20 }}>
-        <IconInformation
-          onPress={(): void => console.log('clicou')}
-          icon={<IconStar />}
-          data="4 hdsjakd jd,sa jdklsaj dhsajkd '"
-          label="downtime"
-        />
-        <IconInformation
-          icon={<IconStar />}
-          data="4'"
-          label="downtime de tempo do coisinha"
-        />
-      </View>
-    </View>
+    <BottomSheetModalProvider>
+      <Global.Screen>
+        <Styled.Container onPress={handleClose}>
+          <Styled.LogoContainer>
+            <IconMeeple
+              width={150}
+              height={150}
+              color={theme.palette.foreground.default}
+            />
+          </Styled.LogoContainer>
+          <Styled.Content>
+            <Styled.TitleContainer>
+              <Styled.Title>{t('login.title')}</Styled.Title>
+              <Styled.SubTitle>{t('login.subtitle')}</Styled.SubTitle>
+            </Styled.TitleContainer>
+            <SocialButton
+              animation={false}
+              label={t('login.google')}
+              onPress={(): void => signIn()}
+              expanded
+              foreground="black"
+              background="#FFF"
+              icon={<IconGoogle />}
+            />
+            <SocialButton
+              animation={false}
+              label={t('login.facebook')}
+              foreground="#FFF"
+              background="#467EEC"
+              // onPress={(): void => signIn()}
+              expanded
+              icon={<IconFacebook />}
+            />
+            <SocialButton
+              animation={false}
+              label={t('login.apple')}
+              foreground="white"
+              background="black"
+              // onPress={(): void => signIn()}
+              icon={<IconApple />}
+              expanded
+            />
+          </Styled.Content>
+          <View>
+            <Button
+              animation={false}
+              action
+              variant="ghost"
+              color="foreground"
+              label={t('login.email')}
+              onPress={handleOpen}
+            />
+          </View>
+        </Styled.Container>
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          enableDynamicSizing
+          handleIndicatorStyle={{
+            backgroundColor: theme.palette.secondary.inverse,
+          }}
+          backgroundStyle={{
+            backgroundColor: theme.palette.background.variant,
+          }}
+        >
+          <Styled.SheetContainer>
+            <Styled.SheetContent>
+              <Styled.SheetTitle>{t('login.sheet.title')}</Styled.SheetTitle>
+              <Styled.SheetInput
+                placeholder={t('login.sheet.email')}
+                placeholderTextColor={theme.palette.foreground.shade30}
+              />
+              <Styled.SheetInput
+                placeholder={t('login.sheet.password')}
+                placeholderTextColor={theme.palette.foreground.shade30}
+              />
+              <Button
+                label={t('login.sheet.button')}
+                action
+                style={{ marginBottom: insets.bottom }}
+              />
+            </Styled.SheetContent>
+          </Styled.SheetContainer>
+        </BottomSheetModal>
+      </Global.Screen>
+    </BottomSheetModalProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: 'red',
-    padding: 12,
-    margin: 16,
-    borderRadius: 12,
-  },
-})

@@ -1,8 +1,17 @@
 const pt = {
-  welcome: 'Ola Mundo',
-  description: 'Esse é o Meeple App',
-  demo: {
-    screen: 'Essa é a DEMO em pt',
+  login: {
+    title: 'Bem-vindo ao Meeple!',
+    subtitle: 'Registre suas partidas e descubra seus jogos favoritos.',
+    google: 'Continuar com Google',
+    facebook: 'Continuar com Facebook',
+    apple: 'Continuar com Apple',
+    email: 'Entrar com Email',
+    sheet: {
+      title: 'Login',
+      button: 'Continuar',
+      email: 'Email',
+      password: 'Senha',
+    },
   },
 }
 
