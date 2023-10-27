@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 import * as Styled from './styles'
 import Button from '@components/button'
-import SocialButton from '@components/button copy'
+import ButtonSocial from '@components/button_social'
 import { IconApple, IconFacebook, IconGoogle, IconMeeple } from '@components/icon'
 import { useAuth, useTheme } from '@contexts'
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
@@ -44,7 +44,7 @@ export default function SignIn(): JSX.Element {
               <Styled.Title>{t('login.title')}</Styled.Title>
               <Styled.SubTitle>{t('login.subtitle')}</Styled.SubTitle>
             </Styled.TitleContainer>
-            <SocialButton
+            <ButtonSocial
               animation={false}
               label={t('login.google')}
               onPress={(): void => signIn()}
@@ -53,7 +53,7 @@ export default function SignIn(): JSX.Element {
               background="#FFF"
               icon={<IconGoogle />}
             />
-            <SocialButton
+            <ButtonSocial
               animation={false}
               label={t('login.facebook')}
               foreground="#FFF"
@@ -63,7 +63,7 @@ export default function SignIn(): JSX.Element {
               icon={<IconFacebook />}
             />
             {Device.osName === 'iOS' && (
-              <SocialButton
+              <ButtonSocial
                 animation={false}
                 label={t('login.apple')}
                 foreground="white"

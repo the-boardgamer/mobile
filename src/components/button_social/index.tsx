@@ -23,7 +23,7 @@ const defaultValues: Props = {
   expanded: false,
 }
 
-export default function SocialButton(props: Props): JSX.Element {
+export default function ButtonSocial(props: Props): JSX.Element {
   const { action, background, foreground, expanded, label, icon, animation, ...rest } = {
     ...defaultValues,
     ...props,
