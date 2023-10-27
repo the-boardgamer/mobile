@@ -26,8 +26,9 @@ export interface BackgroundType {
 
 export interface ForegroundType {
   default: string
-  variant: string
+  inverse: string
   shade30: string
+  variant: string
 }
 
 export interface PaletteType {
