@@ -54,7 +54,7 @@ export const SheetContainer = styled(BottomSheetView)((props) => ({
 export const SheetInput = styled(BottomSheetTextInput)((props) => ({
   borderRadius: props.theme.size.size2,
   fontSize: props.theme.size.size4,
-  lineHeight: 20,
+  lineHeight: '20px',
   padding: props.theme.size.size3,
   backgroundColor: props.theme.palette.background.default,
 }))
